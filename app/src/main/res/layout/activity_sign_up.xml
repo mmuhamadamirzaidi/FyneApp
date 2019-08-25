@@ -20,7 +20,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
-            android:src="@drawable/logoprimary"
+            android:src="@drawable/logoround"
             app:civ_border_color="#ffffff"
             app:civ_border_width="2dp" />
 

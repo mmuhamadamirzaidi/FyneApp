@@ -35,4 +35,6 @@ dependencies {
 
     //Others Library
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'io.paperdb:paperdb:2.1'
+    implementation 'com.github.rey5137:material:1.2.4'
 }
