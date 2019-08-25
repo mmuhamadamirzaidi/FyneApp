@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170952125965",
+    "firebase_url": "https://fyneapp.firebaseio.com",
+    "project_id": "fyneapp",
+    "storage_bucket": "fyneapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170952125965:android:00b5ffe21ee4efc5",
+        "android_client_info": {
+          "package_name": "com.mmuhamadamirzaidi.fyneapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170952125965-rbf58k8j1eemc5jos5cc0ja3ujsmod6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mmuhamadamirzaidi.fyneapp",
+            "certificate_hash": "2f1959cb05759578ae9430a34b2a8eddf3d01f13"
+          }
+        },
+        {
+          "client_id": "170952125965-llmpoq8jmn6hb3cc4dvu8msrkmketj98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbmlX_HqjqOHuvcuKjhKxZ2Wz3LxHmmI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170952125965-llmpoq8jmn6hb3cc4dvu8msrkmketj98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
