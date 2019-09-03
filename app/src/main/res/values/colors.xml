@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //Main
     <color name="colorPrimary">#BA3848</color>
     <color name="colorPrimaryDark">#B32134</color>
     <color name="colorAccent">#B32134</color>
-
-<!--    <color name="colorPrimaryDark">#BA3848</color>-->
 
     //Background
     <color name="backgroundApp">#ffffff</color>
 
     //Button
     <color name="colorTransparent">#00000000</color>
+    <color name="disable">#DDDDDD</color>
 
     //Text
     <color name="textColorPrimaryDark">#2c2c2c</color>
     <color name="textColorPrimary">#4b4b4c</color>
     <color name="textColorAccent">#808080</color>
+
+    //Recycler
+    <color name="defaultColor">#f4f4f4</color>
+<!--    <color name="onclick">#80b9d6</color>-->
+<!--    <color name="booked">#fabf2f</color>-->
+
+    //Progress
+    <color name="white">#ffffff</color>
+    <color name="done">#007000</color>
+    <color name="undone">#b71c1c</color>
 
     //Others
 </resources>

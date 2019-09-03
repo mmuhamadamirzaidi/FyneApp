@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SignIn" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Sign In Account</item>
+        <item name="DialogSpotColor">@color/white</item>
+        <item name="DialogSpotCount">5</item>
+    </style>
+
+    <style name="SignUp" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Sign Up Account</item>
+        <item name="DialogSpotColor">@color/white</item>
+        <item name="DialogSpotCount">5</item>
+    </style>
+
 </resources>

@@ -70,6 +70,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/sign_up_fullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
@@ -100,6 +101,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/sign_up_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
@@ -132,6 +134,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
+                android:id="@+id/sign_up_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
@@ -148,6 +151,7 @@
 
 
         <Button
+            android:id="@+id/button_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -184,6 +188,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/button_account_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
