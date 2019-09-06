@@ -15,8 +15,8 @@
  - Full Name, IC Number, Password
 
 ### Dashboard
- 1) Load Vendor
- - Load Vendor's Products Category
+ 1) Load Holder
+ - Load Holder's Products Category
  - Load Products
  2) Banner Products
  - Load Products
@@ -56,7 +56,7 @@
  - Quantity
  3) Delete Cart Item (Using Swipe)
 
-## Features (Vendor)
+## Features (Holder)
 
 ### Sign In (Authenticate User)
  1) Remember Me Feature
@@ -65,11 +65,11 @@
  4) Sign Out
 
 ### Dashboard
- 1) Vendor
- - Add Vendor
- - Edit Vendor
- - Delete Vendor
- 2) Vendor's Products Category
+ 1) Holder
+ - Add Holder
+ - Edit Holder
+ - Delete Holder
+ 2) Holder's Products Category
  - Add Products Category
  - Edit Products Category
  - Delete Products Category
@@ -80,7 +80,7 @@
 
 ### Profile
  1) Update Profile
- - Vendor's Name, SSM Registration Number, Password
+ - Holder's Name, SSM Registration Number, Password
 
 ### Orders
  1) Show Orders's Details
@@ -97,7 +97,7 @@
  1) Add Runner
  - Full Name, IC Number, Image, Password
 
-## Features (Shipper)
+## Features (Runner)
 
 ### Sign In (Authenticate User)
  1) Remember Me Feature
