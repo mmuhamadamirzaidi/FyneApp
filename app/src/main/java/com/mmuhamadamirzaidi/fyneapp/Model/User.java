@@ -1,14 +1,15 @@
 package com.mmuhamadamirzaidi.fyneapp.Model;
 
 public class User {
-    private String Name, Password;
+    private String Name, Password, IdentityCard;
 
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String name, String password, String identityCard) {
         Name = name;
         Password = password;
+        IdentityCard = identityCard;
     }
 
     public String getName() {
@@ -25,5 +26,13 @@ public class User {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getIdentityCard() {
+        return IdentityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        IdentityCard = identityCard;
     }
 }

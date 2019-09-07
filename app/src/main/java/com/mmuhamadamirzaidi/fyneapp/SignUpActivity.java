@@ -23,6 +23,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText sign_up_fullname, sign_up_phone, sign_up_password;
     private Button button_sign_up, button_account_sign_in;
 
+    private String sign_up_identity_card = "961122115566";
+
     private AlertDialog dialog;
 
     @Override
@@ -64,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
                             dialog.dismiss();
 
                             // Get user information
-                            User user = new User (sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim());
+                            User user = new User (sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim(), sign_up_identity_card);
                             table_user.child(sign_up_phone.getText().toString().trim()).setValue(user);
 
                             Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();

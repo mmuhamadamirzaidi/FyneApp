@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:background="@color/textColorPrimaryDark"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.CardView
@@ -10,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="8dp"
-        android:elevation="@dimen/cardview_default_elevation"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardElevation="0dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -19,39 +23,54 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/product_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/previewlogo"/>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="8dp"
+                android:paddingTop="10dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_height="wrap_content">
 
                 <TextView
+                    android:textColor="@color/textColorPrimaryDark"
                     android:id="@+id/product_name"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/mm"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Products Category Name"/>
+                    android:text="Creatic Vitamin Perming Lotion Resi AaaCreatic Vitamin Perming Lotion Resistant"/>
 
             </LinearLayout>
 
+
             <LinearLayout
-                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="8dp"
+                android:paddingTop="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/product_details"
+                    android:textColor="@color/textColorPrimary"
                     android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="14 items"/>
+                    android:text="15"/>
+
+                <TextView
+                    android:textColor="@color/textColorPrimary"
+                    android:fontFamily="@font/ml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" items"/>
 
 
             </LinearLayout>
