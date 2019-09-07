@@ -15,7 +15,9 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:itemTextAppearance="@style/MonstserratMedium"
+        android:theme="@style/NavigationView" />
 
     <include
         layout="@layout/app_bar_main"

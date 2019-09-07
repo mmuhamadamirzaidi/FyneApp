@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:background="@color/textColorPrimaryDark"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="8dp"
@@ -24,7 +23,7 @@
 
             <ImageView
                 android:scaleType="centerCrop"
-                android:id="@+id/product_image"
+                android:id="@+id/category_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/previewlogo"/>
@@ -39,7 +38,7 @@
 
                 <TextView
                     android:textColor="@color/textColorPrimaryDark"
-                    android:id="@+id/product_name"
+                    android:id="@+id/category_name"
                     android:textSize="15sp"
                     android:fontFamily="@font/mm"
                     android:layout_width="match_parent"

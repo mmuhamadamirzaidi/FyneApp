@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Model.User;
 
 import dmax.dialog.SpotsDialog;
@@ -62,6 +63,7 @@ public class SignInActivity extends AppCompatActivity {
 
                             if (user.getPassword().equals(sign_in_password.getText().toString().trim())) {
                                 Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
+                                Common.currentUser = user;
                                 SendUserToMainActivity();
                             } else {
                                 Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();

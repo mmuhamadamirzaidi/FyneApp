@@ -3,36 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/menu">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_products"
+            android:icon="@drawable/ic_spa_drawer_24dp"
+            android:title="Products" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_holders"
+            android:icon="@drawable/ic_location_city_drawer_24dp"
+            android:title="Holders" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/ic_shopping_basket_drawer_24dp"
+            android:title="Cart" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_order_status"
+            android:icon="@drawable/ic_timelapse_drawer_24dp"
+            android:title="Order Status" />
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@drawable/ic_book_drawer_24dp"
+            android:title="Wishlist" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
+    <group android:checkableBehavior="single" android:id="@+id/menu2">
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_person_drawer_24dp"
+                android:title="Account" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_drawer_24dp"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@drawable/ic_send_drawer_24dp"
+                android:title="Sign Out" />
+    </group>
 
 </menu>

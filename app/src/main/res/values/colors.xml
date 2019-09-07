@@ -6,7 +6,7 @@
     <color name="colorAccent">#B32134</color>
 
     //Background
-    <color name="backgroundApp">#ffffff</color>
+    <color name="backgroundApp">#f4f4f4</color>
 
     //Button
     <color name="colorTransparent">#00000000</color>
@@ -15,10 +15,13 @@
     //Text
     <color name="textColorPrimaryDark">#2c2c2c</color>
     <color name="textColorPrimary">#4b4b4c</color>
-    <color name="textColorAccent">#808080</color>
+    <color name="textColorAccent">#808080</color> //Use for drawer menu
+
+    //Icon Drawer
+    <color name="iconDrawerColor">#737373</color>
 
     //Recycler
-    <color name="defaultColor">#f4f4f4</color>
+<!--    <color name="defaultColor">#f4f4f4</color>-->
 <!--    <color name="onclick">#80b9d6</color>-->
 <!--    <color name="booked">#fabf2f</color>-->
 

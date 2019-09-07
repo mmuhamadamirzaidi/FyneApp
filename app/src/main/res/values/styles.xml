@@ -31,4 +31,17 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MonstserratMedium" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/mm</item>
+        <item name="android:textColor">@color/textColorAccent</item>
+    </style>
+
+    <style name="NavigationView">
+        <item name="android:listDivider">@color/disable</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/mm</item>
+    </style>
+
 </resources>
