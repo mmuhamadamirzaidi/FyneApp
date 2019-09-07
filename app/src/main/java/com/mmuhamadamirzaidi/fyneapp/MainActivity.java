@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
         // Set user informations
         View headerView = navigationView.getHeaderView(0);
