@@ -154,6 +154,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }else if (id == R.id.nav_wishlist) {
 
+        }else if (id == R.id.banned_products) {
+
+        }else if (id == R.id.news) {
+
         }else if (id == R.id.nav_account) {
 
         }else if (id == R.id.nav_settings) {

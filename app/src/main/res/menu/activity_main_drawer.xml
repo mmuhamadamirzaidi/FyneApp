@@ -24,6 +24,14 @@
             android:id="@+id/nav_wishlist"
             android:icon="@drawable/ic_book_drawer_24dp"
             android:title="Wishlist" />
+        <item
+            android:id="@+id/banned_products"
+            android:icon="@drawable/ic_error_drawer_24dp"
+            android:title="Banned Products" />
+        <item
+            android:id="@+id/news"
+            android:icon="@drawable/ic_public_drawer_24dp"
+            android:title="News" />
     </group>
 
     <group android:checkableBehavior="single" android:id="@+id/menu2">
