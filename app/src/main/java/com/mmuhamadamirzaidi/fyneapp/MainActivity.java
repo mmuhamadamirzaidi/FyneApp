@@ -11,11 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
@@ -24,7 +19,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.category_toolbar);
         toolbar.setTitle("Category");
         setSupportActionBar(toolbar);
 
@@ -112,9 +106,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         // Get CategoryId and send to new activity
-                        Intent product = new Intent(MainActivity.this, ProductListActivity.class);
-                        product.putExtra("categoryId", adapter.getRef(position).getKey());
-                        startActivity(product);
+                        Intent product_id = new Intent(MainActivity.this, ProductListActivity.class);
+                        product_id.putExtra("categoryId", adapter.getRef(position).getKey());
+                        startActivity(product_id);
                     }
                 });
             }

@@ -81,6 +81,10 @@ public class ProductListActivity extends AppCompatActivity {
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         Toast.makeText(ProductListActivity.this, "Product Name: "+clickItem.getProductName()+". Notification No: "+clickItem.getNotificationNo(), Toast.LENGTH_SHORT).show();
+
+                        Intent product_detail = new Intent(ProductListActivity.this, ProductDetailActivity.class);
+                        product_detail.putExtra("productId", adapter.getRef(position).getKey());
+                        startActivity(product_detail);
                     }
                 });
             }
