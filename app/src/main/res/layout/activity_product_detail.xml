@@ -105,7 +105,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:weightSum="2"
+                android:weightSum="4"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="8dp"
@@ -117,8 +117,8 @@
 
 
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
+                    android:layout_weight="4"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="left|center_vertical">
@@ -142,7 +142,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
