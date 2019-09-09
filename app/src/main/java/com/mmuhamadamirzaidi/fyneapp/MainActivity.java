@@ -1,5 +1,6 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     RecyclerView recycler_category;
     RecyclerView.LayoutManager layoutManager;
+
+    FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void loadCategory() {
 
-        FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter = new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(Category.class, R.layout.item_category, CategoryViewHolder.class, category) {
+        adapter = new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(Category.class, R.layout.item_category, CategoryViewHolder.class, category) {
             @Override
             protected void populateViewHolder(CategoryViewHolder viewHolder, Category model, int position) {
                 viewHolder.category_name.setText(model.getName());
@@ -107,7 +110,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(MainActivity.this, "Category Name: "+clickItem.getName(), Toast.LENGTH_SHORT).show();
+
+                        // Get CategoryId and send to new activity
+                        Intent product = new Intent(MainActivity.this, ProductListActivity.class);
+                        product.putExtra("categoryId", adapter.getRef(position).getKey());
+                        startActivity(product);
                     }
                 });
             }

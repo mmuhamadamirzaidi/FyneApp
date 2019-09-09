@@ -117,7 +117,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
-            android:paddingStart="@dimen/padding_side"
+            android:paddingStart="11dp"
             android:paddingTop="@dimen/padding_side"
             android:paddingEnd="@dimen/padding_side"
             android:weightSum="2"

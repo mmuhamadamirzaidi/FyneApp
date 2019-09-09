@@ -45,7 +45,7 @@
                     android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Creatic Vitamin Perming Lotion Resi Aaa Creatic Vitamin Perming Lotion Resistant"/>
+                    android:text="Creatic Vitamin Perming Lotion"/>
 
                 <ImageView
                     android:paddingLeft="10dp"
@@ -76,7 +76,7 @@
 
                 <TextView
                     android:textColor="@color/textColorPrimary"
-                    android:id="@+id/product_details"
+                    android:id="@+id/product_notification"
                     android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
