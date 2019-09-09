@@ -7,42 +7,46 @@
     tools:context=".ProductDetailActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
+            android:textAlignment="center"
             android:id="@+id/product_detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolbarTheme"
             app:titleTextColor="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/detail_product_fab_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
-        app:elevation="70dp"
-        app:layout_anchor="@id/detail_image"
-        app:layout_anchorGravity="bottom|right"
-        app:useCompatPadding="true" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/detail_product_fab_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_anchor="@id/detail_image"
+                app:layout_anchorGravity="bottom|right"
+                android:elevation="0dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_shopping_basket_primary_dark_24dp"
+                android:backgroundTint="@color/white"
+                app:borderWidth="0dp"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/detail_product_fab_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_shopping_basket_primary_dark_24dp"
-        app:elevation="6dp"
-        app:layout_anchor="@id/detail_image"
-        app:layout_anchorGravity="bottom|right|end"
-        app:useCompatPadding="true" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/detail_product_fab_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_anchor="@id/detail_image"
+                android:elevation="0dp"
+                android:layout_marginRight="85dp"
+                app:layout_anchorGravity="bottom|right"
+                android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
+                android:backgroundTint="@color/white"
+                app:borderWidth="0dp" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/detail_nested_scroll_view"
@@ -233,6 +237,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="8dp"
                 android:paddingTop="5dp"
@@ -254,5 +259,47 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+<!--    <android.support.design.widget.FloatingActionButton-->
+<!--        android:id="@+id/detail_product_fab_bookmark"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@drawable/ic_bookmark_border_white_24dp" />-->
+
+<!--    <android.support.design.widget.FloatingActionButton-->
+<!--        android:id="@+id/detail_product_fab_cart"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@drawable/ic_shopping_basket_white_24dp" />-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_anchorGravity="bottom|right|end" >-->
+
+<!--        <android.support.design.widget.FloatingActionButton-->
+<!--            android:id="@+id/detail_product_fab_bookmark"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/ic_bookmark_border_primary_dark_24dp"-->
+<!--            app:useCompatPadding="true" />-->
+
+<!--        <android.support.design.widget.FloatingActionButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/ic_shopping_basket_primary_dark_24dp"-->
+<!--            app:useCompatPadding="true" />-->
+
+
+<!--    </LinearLayout>-->
 
 </android.support.design.widget.CoordinatorLayout>

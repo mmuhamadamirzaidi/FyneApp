@@ -31,7 +31,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     TextView detail_product_name, detail_product_notification, detail_product_price, detail_product_description;
 
-    CollapsingToolbarLayout detail_collapsing;
     FloatingActionButton detail_product_fab_bookmark, detail_product_fab_cart;
 
     String productId="";
@@ -56,12 +55,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         detail_product_notification = (TextView) findViewById(R.id.detail_product_notification);
         detail_product_price = (TextView) findViewById(R.id.detail_product_price);
         detail_product_description = (TextView) findViewById(R.id.detail_product_description);
-
-//        detail_collapsing = (CollapsingToolbarLayout) findViewById(R.id.detail_collapsing);
-//        detail_collapsing.setExpandedTitleTextAppearance(R.style.ToolbarTheme);
-//        detail_collapsing.setCollapsedTitleTextAppearance(R.style.ToolbarTheme);
-//        detail_collapsing.setTitle("Product's Description");
-
         detail_product_fab_bookmark = (FloatingActionButton) findViewById(R.id.detail_product_fab_bookmark);
         detail_product_fab_cart = (FloatingActionButton) findViewById(R.id.detail_product_fab_cart);
 
