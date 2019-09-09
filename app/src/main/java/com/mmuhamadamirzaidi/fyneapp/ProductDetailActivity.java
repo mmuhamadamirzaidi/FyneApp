@@ -41,7 +41,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_detail);
 
         Toolbar toolbar = findViewById(R.id.product_detail_toolbar);
-        toolbar.setTitle("Product's Details");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         // Init Firebase
