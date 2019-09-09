@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +41,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
+        Toolbar toolbar = findViewById(R.id.product_detail_toolbar);
+        toolbar.setTitle("Product's Details");
+        setSupportActionBar(toolbar);
+
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         product = database.getReference("Product");
@@ -52,10 +57,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         detail_product_price = (TextView) findViewById(R.id.detail_product_price);
         detail_product_description = (TextView) findViewById(R.id.detail_product_description);
 
-        detail_collapsing = (CollapsingToolbarLayout) findViewById(R.id.detail_collapsing);
-        detail_collapsing.setExpandedTitleTextAppearance(R.style.ToolbarTheme);
-        detail_collapsing.setCollapsedTitleTextAppearance(R.style.ToolbarTheme);
-        detail_collapsing.setTitle("Product's Description");
+//        detail_collapsing = (CollapsingToolbarLayout) findViewById(R.id.detail_collapsing);
+//        detail_collapsing.setExpandedTitleTextAppearance(R.style.ToolbarTheme);
+//        detail_collapsing.setCollapsedTitleTextAppearance(R.style.ToolbarTheme);
+//        detail_collapsing.setTitle("Product's Description");
 
         detail_product_fab_bookmark = (FloatingActionButton) findViewById(R.id.detail_product_fab_bookmark);
         detail_product_fab_cart = (FloatingActionButton) findViewById(R.id.detail_product_fab_cart);

@@ -42,9 +42,9 @@ public class ProductListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.setTitle("Product");
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.product_list_toolbar);
+        toolbar.setTitle("Product List");
+        setSupportActionBar(toolbar);
 
         // Init Firebase
         database = FirebaseDatabase.getInstance();
