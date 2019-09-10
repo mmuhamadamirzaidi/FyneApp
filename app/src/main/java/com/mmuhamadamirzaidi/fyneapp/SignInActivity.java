@@ -61,7 +61,7 @@ public class SignInActivity extends AppCompatActivity {
                             // Get user information
                             User user = dataSnapshot.child(sign_in_phone.getText().toString().trim()).getValue(User.class);
 
-                            if (user.getPassword().equals(sign_in_password.getText().toString().trim())) {
+                            if (user.getUserPassword().equals(sign_in_password.getText().toString().trim())) {
                                 Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
                                 Common.currentUser = user;
                                 SendUserToMainActivity();
