@@ -129,17 +129,33 @@
             app:hintEnabled="false">
 
             <EditText
-                android:id="@+id/sign_in_password"
+                android:id="@+id/frf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:layout_marginEnd="13dp"
                 android:fontFamily="@font/mr"
-                android:hint="Insert your address"
-                android:inputType="textPassword"
+                android:hint="Insert delivery address"
+                android:inputType="text"
                 android:textColor="@color/textColorAccent"
                 android:textColorHint="@color/textColorAccent"
                 android:textSize="15sp" />
+
+<!--            <fragment-->
+<!--                android:paddingTop="10dp"-->
+<!--                -->
+<!--                android:id="@+id/sign_in_password"-->
+<!--                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="13dp"-->
+<!--                android:layout_marginEnd="13dp"-->
+<!--                android:fontFamily="@font/mr"-->
+<!--                android:hint="Insert your address"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@color/textColorAccent"-->
+<!--                android:textColorHint="@color/textColorAccent"-->
+<!--                android:textSize="15sp" />-->
 
         </android.support.design.widget.TextInputLayout>
 
@@ -206,8 +222,8 @@
                 android:layout_marginStart="13dp"
                 android:layout_marginEnd="13dp"
                 android:fontFamily="@font/mr"
-                android:hint="Insert delivery address"
-                android:inputType="textPassword"
+                android:hint="Insert delivery notes"
+                android:inputType="text"
                 android:textColor="@color/textColorAccent"
                 android:textColorHint="@color/textColorAccent"
                 android:textSize="15sp" />

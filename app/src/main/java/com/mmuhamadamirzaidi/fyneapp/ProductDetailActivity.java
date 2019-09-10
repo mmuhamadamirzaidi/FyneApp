@@ -17,7 +17,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mmuhamadamirzaidi.fyneapp.Database.Database;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
+import com.mmuhamadamirzaidi.fyneapp.Model.Order;
 import com.mmuhamadamirzaidi.fyneapp.Model.Product;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
@@ -33,7 +35,9 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     FloatingActionButton detail_product_fab_bookmark, detail_product_fab_cart;
 
-    String productId="";
+    String productId="", quantity = "1";
+
+    Product currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +59,25 @@ public class ProductDetailActivity extends AppCompatActivity {
         detail_product_notification = (TextView) findViewById(R.id.detail_product_notification);
         detail_product_price = (TextView) findViewById(R.id.detail_product_price);
         detail_product_description = (TextView) findViewById(R.id.detail_product_description);
+
         detail_product_fab_bookmark = (FloatingActionButton) findViewById(R.id.detail_product_fab_bookmark);
         detail_product_fab_cart = (FloatingActionButton) findViewById(R.id.detail_product_fab_cart);
+
+        detail_product_fab_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new Database(getBaseContext()).addToCart(new Order(
+                        productId,
+                        currentProduct.getProductName(),
+                        quantity,
+                        currentProduct.getProductPrice(),
+                        currentProduct.getProductDiscount()
+                ));
+
+                Toast.makeText(ProductDetailActivity.this, currentProduct.getProductName()+" added to cart!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Get productId intent
         if (getIntent() != null){
@@ -71,15 +92,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         product.child(productId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Product product = dataSnapshot.getValue(Product.class);
+                currentProduct = dataSnapshot.getValue(Product.class);
 
                 // Set image
-                Picasso.with(getBaseContext()).load(product.getProductImage()).into(detail_image);
+                Picasso.with(getBaseContext()).load(currentProduct.getProductImage()).into(detail_image);
 
-                detail_product_name.setText(product.getProductName());
-                detail_product_notification.setText(product.getNotificationNo());
-                detail_product_price.setText(product.getProductPrice());
-                detail_product_description.setText(product.getProductDescription());
+                detail_product_name.setText(currentProduct.getProductName());
+                detail_product_notification.setText(currentProduct.getNotificationNo());
+                detail_product_price.setText(currentProduct.getProductPrice());
+                detail_product_description.setText(currentProduct.getProductDescription());
             }
 
             @Override
