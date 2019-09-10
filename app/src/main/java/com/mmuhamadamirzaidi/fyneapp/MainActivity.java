@@ -78,12 +78,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
         header_fullname = (TextView) headerView.findViewById(R.id.header_fullname);
         header_identity_card = (TextView) headerView.findViewById(R.id.header_identity_card);
+        header_profile_image = (ImageView) headerView.findViewById(R.id.header_profile_image);
 
         header_fullname.setText(Common.currentUser.getUserName());
         header_identity_card.setText(Common.currentUser.getUserIdentityCard());
 
         // Set image
-        Picasso.with(getBaseContext()).load(product.getProductImage()).into(detail_image);
+        Picasso.with(getBaseContext()).load(Common.currentUser.getUserImage()).into(header_profile_image);
 
         // Load category
         recycler_category = (RecyclerView) findViewById(R.id.recycler_category);

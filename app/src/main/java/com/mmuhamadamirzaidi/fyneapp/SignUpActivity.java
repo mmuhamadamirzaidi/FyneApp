@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private String sign_up_image = "https://firebasestorage.googleapis.com/v0/b/fyneapp.appspot.com/o/profile.png?alt=media&token=40506c2c-26ee-4487-923b-d5d12e67d51a";
     private String sign_up_is_staff = "false";
     private String sign_up_secure_code = "abc123456";
-    private String sign_up_holder_id = "01";
+    private String sign_up_holder_id = "00";
 
     private AlertDialog dialog;
 
@@ -72,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
                             dialog.dismiss();
 
                             // Get user information
-                            User user = new User (sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim(), sign_up_phone.getText().toString().trim(), sign_up_identity_card, sign_up_address, sign_up_image, sign_up_is_staff, sign_up_secure_code, sign_up_holder_id);
+                            User user = new User (sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim(), sign_up_identity_card, sign_up_phone.getText().toString().trim(), sign_up_address, sign_up_image, sign_up_is_staff, sign_up_secure_code, sign_up_holder_id);
                             table_user.child(sign_up_phone.getText().toString().trim()).setValue(user);
 
                             Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
