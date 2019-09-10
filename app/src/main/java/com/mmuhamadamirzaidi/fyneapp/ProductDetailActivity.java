@@ -35,7 +35,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     FloatingActionButton detail_product_fab_bookmark, detail_product_fab_cart;
 
-    String productId="", quantity = "1";
+    String productId="", quantity = "2";
 
     Product currentProduct;
 

@@ -56,8 +56,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
         this.context = context;
     }
 
-    //    String delivery_charge = "6", others_charge = "1";
-
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);

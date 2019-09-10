@@ -3,14 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CartActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_cart"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/cart_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/cart_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ToolbarTheme"
+            app:titleTextColor="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Cart"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:theme="@style/ToolbarTheme"
+                android:id="@+id/toolbar_title" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/cart_app_bar_layout"
+        android:id="@+id/recycler_cart"
+        android:layout_above="@+id/cart_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cart_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
@@ -58,14 +91,6 @@
                     android:text="Sub Total" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:fontFamily="@font/mr"
-                    android:gravity="end"
-                    android:text="RM" />
-
-                <TextView
                     android:id="@+id/cart_sub_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,7 +101,13 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/disable" />
+
             <LinearLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -93,14 +124,6 @@
                     android:text="Delivery Charge" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:fontFamily="@font/mr"
-                    android:gravity="end"
-                    android:text="RM" />
-
-                <TextView
                     android:id="@+id/cart_delivery_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,7 +134,13 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/disable" />
+
             <LinearLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -134,19 +163,17 @@
                     android:layout_weight="0"
                     android:fontFamily="@font/mr"
                     android:gravity="end"
-                    android:text="RM" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:fontFamily="@font/mr"
-                    android:gravity="end"
                     android:text="0" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/disable" />
+
             <LinearLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -161,15 +188,6 @@
                     android:fontFamily="@font/mm"
                     android:gravity="start"
                     android:text="Grand Total" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:fontFamily="@font/mr"
-                    android:gravity="end"
-                    android:text="RM"
-                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/cart_grand_total"
@@ -205,20 +223,7 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/disable" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/disable" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/disable" />
 
         </LinearLayout>
 

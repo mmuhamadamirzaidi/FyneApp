@@ -45,9 +45,9 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-//        Toolbar toolbar = findViewById(R.id.product_list_toolbar);
-//        toolbar.setTitle("");
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.cart_toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
 
         // Init Firebase
         database = FirebaseDatabase.getInstance();
@@ -59,7 +59,11 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recycler_cart.setLayoutManager(layoutManager);
 
+        cart_sub_total = (TextView) findViewById(R.id.cart_sub_total);
+        cart_delivery_charge = (TextView) findViewById(R.id.cart_delivery_charge);
+        cart_others_charge = (TextView) findViewById(R.id.cart_others_charge);
         cart_grand_total = (TextView) findViewById(R.id.cart_grand_total);
+
         cart_button_place_order = (Button) findViewById(R.id.cart_button_place_order);
 
         cart_button_place_order.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +74,9 @@ public class CartActivity extends AppCompatActivity {
 //                        Common.currentUser.getUserName()
 //                )
 
-//                Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
+                Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
 //                checkoutIntent.putExtra(cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total);
-//                startActivity(checkoutIntent);
+                startActivity(checkoutIntent);
             }
         });
 

@@ -40,9 +40,9 @@ dependencies {
 
     //Firebase Library
     implementation 'com.google.firebase:firebase-core:10.2.0'
-    implementation 'com.google.firebase:firebase-databases:10.2.0'
+    implementation 'com.google.firebase:firebase-database:10.2.0'
 
-    implementation 'com.firebaseui:firebase-ui-databases:1.2.0'
+    implementation 'com.firebaseui:firebase-ui-database:1.2.0'
 
     //Google Service Library
 //    implementation 'com.google.android.gms:play-services-places:11.6.2'
