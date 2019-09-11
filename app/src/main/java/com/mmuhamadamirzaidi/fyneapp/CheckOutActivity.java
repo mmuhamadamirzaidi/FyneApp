@@ -54,9 +54,9 @@ public class CheckOutActivity extends AppCompatActivity {
 
 
 
-        String cart_sub_total = getIntent().getStringExtra("cart_sub_total");
-        String cart_delivery_charge = getIntent().getStringExtra("cart_delivery_charge");
-        String cart_others_charge = getIntent().getStringExtra("cart_others_charge");
+//        String cart_sub_total = getIntent().getStringExtra("cart_sub_total");
+//        String cart_delivery_charge = getIntent().getStringExtra("cart_delivery_charge");
+//        String cart_others_charge = getIntent().getStringExtra("cart_others_charge");
         final String cart_grand_total = getIntent().getStringExtra("cart_grand_total");
 
         cart = new Database(this).getCart();
@@ -80,6 +80,7 @@ public class CheckOutActivity extends AppCompatActivity {
 
                 //Clear cart item
 
+                Common.cart_discount_global = "";
                 Common.cart_sub_total_global = "";
                 Common.cart_delivery_charge_global = "";
                 Common.cart_others_charge_global = "";

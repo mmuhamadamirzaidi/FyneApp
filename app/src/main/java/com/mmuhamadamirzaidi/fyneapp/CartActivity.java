@@ -30,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recycler_cart;
     RecyclerView.LayoutManager layoutManager;
 
-    TextView cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total;
+    TextView cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total, cart_discount;
 
     Button cart_button_place_order, cart_button_order_detail;
 
@@ -57,6 +57,7 @@ public class CartActivity extends AppCompatActivity {
         cart_delivery_charge = (TextView) findViewById(R.id.cart_delivery_charge);
         cart_others_charge = (TextView) findViewById(R.id.cart_others_charge);
         cart_grand_total = (TextView) findViewById(R.id.cart_grand_total);
+        cart_discount = (TextView) findViewById(R.id.cart_discount);
 
         cart_button_place_order = (Button) findViewById(R.id.cart_button_place_order);
         cart_button_order_detail = (Button) findViewById(R.id.cart_button_order_detail);
@@ -65,9 +66,9 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
-                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
-                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
-                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
+//                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
+//                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
+//                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
                 checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
                 startActivity(checkoutIntent);
             }
@@ -92,15 +93,17 @@ public class CartActivity extends AppCompatActivity {
         recycler_cart.setAdapter(cartAdapter);
 
         //Calculate grand total
-        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0, total_charge;
+        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0, discount = 0, total_charge;
 
         for (Order order:cart) {
             delivery_charge = (Integer.parseInt("6"));
             others_charge = (Integer.parseInt("1"));
             total_charge = delivery_charge + others_charge;
 
+            discount += (Integer.parseInt(order.getDiscount()));
+
             sub_total_initial += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
-            grand_total_initial = sub_total_initial + total_charge;
+            grand_total_initial = sub_total_initial + total_charge - discount;
         }
 
         Locale locale = new Locale("en", "MY");
@@ -109,11 +112,13 @@ public class CartActivity extends AppCompatActivity {
         cart_sub_total.setText(fmt.format(sub_total_initial));
         cart_delivery_charge.setText(fmt.format(delivery_charge));
         cart_others_charge.setText(fmt.format(others_charge));
+        cart_discount.setText(fmt.format(discount));
         cart_grand_total.setText(fmt.format(grand_total_initial));
 
         Common.cart_sub_total_global = (fmt.format(sub_total_initial));
         Common.cart_delivery_charge_global = (fmt.format(delivery_charge));
         Common.cart_others_charge_global = (fmt.format(others_charge));
+        Common.cart_discount_global = (fmt.format(discount));
         Common.cart_grand_total_global = (fmt.format(grand_total_initial));
 
     }
