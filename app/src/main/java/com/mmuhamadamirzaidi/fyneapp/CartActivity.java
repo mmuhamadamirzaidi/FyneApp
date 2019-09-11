@@ -35,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
 
     TextView cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total;
 
-    Button cart_button_place_order;
+    Button cart_button_place_order, cart_button_order_detail;
 
     List<Order> cart = new ArrayList<>();
 
@@ -66,6 +66,7 @@ public class CartActivity extends AppCompatActivity {
         cart_grand_total = (TextView) findViewById(R.id.cart_grand_total);
 
         cart_button_place_order = (Button) findViewById(R.id.cart_button_place_order);
+        cart_button_order_detail = (Button) findViewById(R.id.cart_button_order_detail);
 
         cart_button_place_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +77,14 @@ public class CartActivity extends AppCompatActivity {
                 checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
                 checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
                 startActivity(checkoutIntent);
+            }
+        });
+
+        cart_button_order_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent orderIntent = new Intent(CartActivity.this, OrderDetailActivity.class);
+                startActivity(orderIntent);
             }
         });
 

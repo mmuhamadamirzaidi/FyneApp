@@ -25,10 +25,11 @@
 <!--    <color name="onclick">#80b9d6</color>-->
 <!--    <color name="booked">#fabf2f</color>-->
 
-    //Progress
-    <color name="white">#ffffff</color>
-    <color name="done">#007000</color>
-    <color name="undone">#b71c1c</color>
+    //Order Status
+    <color name="delivered">#10800C</color>
+    <color name="ontheway">#E4921F</color>
+    <color name="cancel">#941512</color>
 
     //Others
+    <color name="white">#ffffff</color>
 </resources>
