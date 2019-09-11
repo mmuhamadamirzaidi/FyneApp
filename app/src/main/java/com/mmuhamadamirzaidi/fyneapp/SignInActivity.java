@@ -2,10 +2,12 @@ package com.mmuhamadamirzaidi.fyneapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText sign_in_phone, sign_in_password;
     private Button button_sign_in, button_account_sign_up;
 
+    private CheckBox sign_in_remember_me;
+
     private AlertDialog dialog;
 
     @Override
@@ -36,6 +40,10 @@ public class SignInActivity extends AppCompatActivity {
 
         button_sign_in = findViewById(R.id.button_sign_in);
         button_account_sign_up = findViewById(R.id.button_account_sign_up);
+
+        sign_in_remember_me = findViewById(R.id.sign_in_remember_me);
+
+        sign_in_remember_me.setTypeface(ResourcesCompat.getFont(getBaseContext(), R.font.mr));
 
         // Custom dialog
         dialog = new SpotsDialog.Builder().setContext(SignInActivity.this).setTheme(R.style.SignIn).build();

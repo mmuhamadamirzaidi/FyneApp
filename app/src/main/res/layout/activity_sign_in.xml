@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundApp"
-    android:orientation="vertical"
     tools:context=".SignInActivity">
 
     <LinearLayout
+        android:id="@+id/sign_in_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -49,8 +49,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_above="@+id/sign_in_bottom"
+        android:layout_below="@+id/sign_in_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="30dp"
         android:orientation="vertical">
 
@@ -131,18 +133,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <com.rey.material.widget.CheckBox
-                        android:id="@+id/ckbRemember"
-                        style="@style/Material.Drawable.CheckBox"
+<!--                    android:fontFamily="@font/mr"-->
+
+                    <CheckBox
+                        android:id="@+id/sign_in_remember_me"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mr"
                         android:gravity="center_vertical"
                         android:text="Remember me!"
                         android:textColor="@color/textColorAccent"
-                        android:textSize="15sp"
-                        app:cbd_strokeColor="@color/colorPrimary"
-                        app:cbd_tickColor="@android:color/white" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -167,7 +167,7 @@
         <Button
             android:id="@+id/button_sign_in"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/padding_side"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="@dimen/padding_side"
@@ -179,9 +179,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/sign_in_bottom"
+        android:paddingBottom="20dp"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -204,7 +206,7 @@
         <Button
             android:id="@+id/button_account_sign_up"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/padding_side"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/padding_side"
@@ -216,4 +218,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

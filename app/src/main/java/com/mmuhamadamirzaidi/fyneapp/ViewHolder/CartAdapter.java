@@ -2,16 +2,19 @@ package com.mmuhamadamirzaidi.fyneapp.ViewHolder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Order;
 import com.mmuhamadamirzaidi.fyneapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -20,13 +23,16 @@ import java.util.Locale;
 
 class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView item_cart_product_name, item_cart_price;
+    public TextView item_cart_product_name, item_cart_price;
 
-    ElegantNumberButton item_cart_count;
+    public ImageView item_cart_product_image;
+
+    public ElegantNumberButton item_cart_count;
 
     private ItemClickListener itemClickListener;
 
-    public void setItem_cart_product_name(TextView item_cart_product_name) {
+    public CartViewHolder(@NonNull View itemView, TextView item_cart_product_name) {
+        super(itemView);
         this.item_cart_product_name = item_cart_product_name;
     }
 
@@ -35,6 +41,8 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
         item_cart_product_name = (TextView) itemView.findViewById(R.id.item_cart_product_name);
         item_cart_price = (TextView) itemView.findViewById(R.id.item_cart_price);
+
+        item_cart_product_image = (ImageView) itemView.findViewById(R.id.item_cart_product_image);
 
         item_cart_count = (ElegantNumberButton) itemView.findViewById(R.id.item_cart_count);
 
@@ -64,7 +72,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i) {
+    public void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, final int i) {
+
+
+//        cartViewHolder.item_cart_count.setTypeface(ResourcesCompat.getFont(context.getApplicationContext(), R.font.mr));
 
         cartViewHolder.item_cart_count.setNumber(listData.get(i).getQuantity());
 
@@ -76,6 +87,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
         cartViewHolder.item_cart_product_name.setText(listData.get(i).getProductName());
         cartViewHolder.item_cart_price.setText(fmt.format(price));
 
+        Picasso.with(context.getApplicationContext())
+                .load(listData.get(i).getProductImage())
+                .into(cartViewHolder.item_cart_product_image);
     }
 
     @Override

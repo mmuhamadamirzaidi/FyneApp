@@ -35,7 +35,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     FloatingActionButton detail_product_fab_bookmark, detail_product_fab_cart;
 
-    String productId="", quantity = "2";
+    String productId="", quantity = "1";
 
     Product currentProduct;
 
@@ -72,7 +72,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                         currentProduct.getProductName(),
                         quantity,
                         currentProduct.getProductPrice(),
-                        currentProduct.getProductDiscount()
+                        currentProduct.getProductDiscount(),
+                        currentProduct.getProductImage()
                 ));
 
                 Toast.makeText(ProductDetailActivity.this, currentProduct.getProductName()+" added to cart!", Toast.LENGTH_SHORT).show();

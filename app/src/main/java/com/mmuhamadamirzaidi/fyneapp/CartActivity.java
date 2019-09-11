@@ -27,9 +27,6 @@ import java.util.Locale;
 
 public class CartActivity extends AppCompatActivity {
 
-//    FirebaseDatabase database;
-//    DatabaseReference orderrequest;
-
     RecyclerView recycler_cart;
     RecyclerView.LayoutManager layoutManager;
 
@@ -49,10 +46,6 @@ public class CartActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.cart_toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-
-//        // Init Firebase
-//        database = FirebaseDatabase.getInstance();
-//        orderrequest = database.getReference("OrderRequest");
 
         // Load category
         recycler_cart = (RecyclerView) findViewById(R.id.recycler_cart);

@@ -2,17 +2,18 @@ package com.mmuhamadamirzaidi.fyneapp.Model;
 
 public class Order {
 
-    public String productId, productName, quantity, price, discount;
+    public String productId, productName, quantity, price, discount, productImage;
 
     public Order() {
     }
 
-    public Order(String productId, String productName, String quantity, String price, String discount) {
+    public Order(String productId, String productName, String quantity, String price, String discount, String productImage) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;
         this.discount = discount;
+        this.productImage = productImage;
     }
 
     public String getProductId() {
@@ -53,5 +54,13 @@ public class Order {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 }
