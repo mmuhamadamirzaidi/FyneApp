@@ -77,7 +77,7 @@ public class CartActivity extends AppCompatActivity {
         cart_button_order_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent orderIntent = new Intent(CartActivity.this, OrderDetailActivity.class);
+                Intent orderIntent = new Intent(CartActivity.this, OrderStatusActivity.class);
                 startActivity(orderIntent);
             }
         });

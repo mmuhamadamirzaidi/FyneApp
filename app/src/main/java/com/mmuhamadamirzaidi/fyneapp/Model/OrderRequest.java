@@ -9,6 +9,8 @@ public class OrderRequest {
     public String userAddress;
     public String grandTotal;
 
+    public String status;
+
     public List<Order> product;
 
     public OrderRequest() {
@@ -19,6 +21,7 @@ public class OrderRequest {
         this.userName = userName;
         this.userAddress = userAddress;
         this.grandTotal = grandTotal;
+        this.status = "0"; //Default 0:Processing, 1:On the way, 2:Delivered
         this.product = product;
     }
 
@@ -52,6 +55,14 @@ public class OrderRequest {
 
     public void setGrandTotal(String grandTotal) {
         this.grandTotal = grandTotal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<Order> getProduct() {
