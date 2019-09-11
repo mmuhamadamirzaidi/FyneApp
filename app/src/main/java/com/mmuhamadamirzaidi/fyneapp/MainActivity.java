@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -150,24 +151,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_products) {
-            // Handle the camera action
+
+            Intent menuIntent = new Intent(MainActivity.this, ProductListActivity.class);
+            startActivity(menuIntent);
+
         } else if (id == R.id.nav_holders) {
+
+
+            Toast.makeText(MainActivity.this, "Holders", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_cart) {
 
+            Intent menuIntent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(menuIntent);
+
         } else if (id == R.id.nav_order_status) {
+
+            Intent menuIntent = new Intent(MainActivity.this, OrderStatusActivity.class);
+            startActivity(menuIntent);
 
         }else if (id == R.id.nav_wishlist) {
 
+            Toast.makeText(MainActivity.this, "Wishlist", Toast.LENGTH_SHORT).show();
+
         }else if (id == R.id.banned_products) {
+
+            Toast.makeText(MainActivity.this, "Banned Products", Toast.LENGTH_SHORT).show();
 
         }else if (id == R.id.news) {
 
+            Toast.makeText(MainActivity.this, "News", Toast.LENGTH_SHORT).show();
+
         }else if (id == R.id.nav_account) {
+
+            Toast.makeText(MainActivity.this, "Account", Toast.LENGTH_SHORT).show();
 
         }else if (id == R.id.nav_settings) {
 
+            Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+
         }else if (id == R.id.nav_sign_out) {
+
+            Intent menuIntent = new Intent(MainActivity.this, SignInActivity.class);
+            menuIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(menuIntent);
+            Toast.makeText(MainActivity.this, "Sign out successfully", Toast.LENGTH_SHORT).show();
 
         }
 
