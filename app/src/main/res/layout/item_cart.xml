@@ -53,6 +53,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:text="Product's Name"
                             android:textColor="@color/textColorPrimaryDark"
                             android:id="@+id/item_cart_product_name"
                             android:textSize="15sp"
@@ -102,6 +103,7 @@
                             <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                                 android:id="@+id/item_cart_count"
                                 android:gravity="right"
+                                app:textSize="15sp"
                                 android:fontFamily="@font/mr"
                                 android:layout_width="100dp"
                                 android:layout_height="30dp"

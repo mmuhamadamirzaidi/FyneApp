@@ -1,6 +1,7 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,8 +27,8 @@ import java.util.Locale;
 
 public class CartActivity extends AppCompatActivity {
 
-    FirebaseDatabase database;
-    DatabaseReference orderrequest;
+//    FirebaseDatabase database;
+//    DatabaseReference orderrequest;
 
     RecyclerView recycler_cart;
     RecyclerView.LayoutManager layoutManager;
@@ -49,9 +50,9 @@ public class CartActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        // Init Firebase
-        database = FirebaseDatabase.getInstance();
-        orderrequest = database.getReference("OrderRequest");
+//        // Init Firebase
+//        database = FirebaseDatabase.getInstance();
+//        orderrequest = database.getReference("OrderRequest");
 
         // Load category
         recycler_cart = (RecyclerView) findViewById(R.id.recycler_cart);
@@ -69,13 +70,11 @@ public class CartActivity extends AppCompatActivity {
         cart_button_place_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                OrderRequest orderRequest = new OrderRequest(
-//                        Common.currentUser.getUserPhone(),
-//                        Common.currentUser.getUserName()
-//                )
-
-                Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
-//                checkoutIntent.putExtra(cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total);
+                             Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
+                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
+                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
+                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
+                checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
                 startActivity(checkoutIntent);
             }
         });
@@ -91,11 +90,13 @@ public class CartActivity extends AppCompatActivity {
         recycler_cart.setAdapter(cartAdapter);
 
         //Calculate grand total
-        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 6, others_charge = 1;
+        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0;
 
         for (Order order:cart)
             sub_total_initial+=(Integer.parseInt(order.getPrice()))*(Integer.parseInt(order.getQuantity()));
-            grand_total_initial+=sub_total_initial+delivery_charge+others_charge;
+            grand_total_initial+=sub_total_initial+Common.delivery_charge+Common.others_charge;
+            delivery_charge+=6;
+            others_charge+=1;
 
         Locale locale = new Locale("en", "MY");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -104,5 +105,11 @@ public class CartActivity extends AppCompatActivity {
         cart_delivery_charge.setText(fmt.format(delivery_charge));
         cart_others_charge.setText(fmt.format(others_charge));
         cart_grand_total.setText(fmt.format(grand_total_initial));
+
+        Common.cart_sub_total_global = (fmt.format(sub_total_initial));
+        Common.cart_delivery_charge_global = (fmt.format(Common.delivery_charge));
+        Common.cart_others_charge_global = (fmt.format(Common.others_charge));
+        Common.cart_grand_total_global = (fmt.format(grand_total_initial));
+
     }
 }

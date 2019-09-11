@@ -7,18 +7,18 @@ public class OrderRequest {
     public String userPhone;
     public String userName;
     public String userAddress;
-    public String userTotal;
+    public String grandTotal;
 
     public List<Order> product;
 
     public OrderRequest() {
     }
 
-    public OrderRequest(String userPhone, String userName, String userAddress, String userTotal, List<Order> product) {
+    public OrderRequest(String userPhone, String userName, String userAddress, String grandTotal, List<Order> product) {
         this.userPhone = userPhone;
         this.userName = userName;
         this.userAddress = userAddress;
-        this.userTotal = userTotal;
+        this.grandTotal = grandTotal;
         this.product = product;
     }
 
@@ -46,12 +46,12 @@ public class OrderRequest {
         this.userAddress = userAddress;
     }
 
-    public String getUserTotal() {
-        return userTotal;
+    public String getGrandTotal() {
+        return grandTotal;
     }
 
-    public void setUserTotal(String userTotal) {
-        this.userTotal = userTotal;
+    public void setGrandTotal(String grandTotal) {
+        this.grandTotal = grandTotal;
     }
 
     public List<Order> getProduct() {
