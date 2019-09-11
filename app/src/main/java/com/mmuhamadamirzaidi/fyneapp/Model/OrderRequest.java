@@ -4,54 +4,54 @@ import java.util.List;
 
 public class OrderRequest {
 
-    public String Phone;
-    public String Name;
-    public String Address;
-    public String Total;
+    public String userPhone;
+    public String userName;
+    public String userAddress;
+    public String userTotal;
 
     public List<Order> product;
 
     public OrderRequest() {
     }
 
-    public OrderRequest(String phone, String name, String address, String total, List<Order> product) {
-        Phone = phone;
-        Name = name;
-        Address = address;
-        Total = total;
+    public OrderRequest(String userPhone, String userName, String userAddress, String userTotal, List<Order> product) {
+        this.userPhone = userPhone;
+        this.userName = userName;
+        this.userAddress = userAddress;
+        this.userTotal = userTotal;
         this.product = product;
     }
 
-    public String getPhone() {
-        return Phone;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public String getName() {
-        return Name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getAddress() {
-        return Address;
+    public String getUserAddress() {
+        return userAddress;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
     }
 
-    public String getTotal() {
-        return Total;
+    public String getUserTotal() {
+        return userTotal;
     }
 
-    public void setTotal(String total) {
-        Total = total;
+    public void setUserTotal(String userTotal) {
+        this.userTotal = userTotal;
     }
 
     public List<Order> getProduct() {

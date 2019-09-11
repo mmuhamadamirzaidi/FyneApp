@@ -1,92 +1,92 @@
 package com.mmuhamadamirzaidi.fyneapp.Model;
 
 public class User {
-    private String UserName, UserPassword, UserIdentityCard, UserPhone, UserAddress, UserImage, IsStaff, UserSecureCode, UserHolderId;
+    private String userName, userPassword, userIdentityCard, userPhone, userAddress, userImage, isStaff, userSecureCode, userHolderId;
 
     public User() {
     }
 
     public User(String userName, String userPassword, String userIdentityCard, String userPhone, String userAddress, String userImage, String isStaff, String userSecureCode, String userHolderId) {
-        UserName = userName;
-        UserPassword = userPassword;
-        UserIdentityCard = userIdentityCard;
-        UserPhone = userPhone;
-        UserAddress = userAddress;
-        UserImage = userImage;
-        IsStaff = isStaff;
-        UserSecureCode = userSecureCode;
-        UserHolderId = userHolderId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userIdentityCard = userIdentityCard;
+        this.userPhone = userPhone;
+        this.userAddress = userAddress;
+        this.userImage = userImage;
+        this.isStaff = isStaff;
+        this.userSecureCode = userSecureCode;
+        this.userHolderId = userHolderId;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getUserPassword() {
-        return UserPassword;
+        return userPassword;
     }
 
     public void setUserPassword(String userPassword) {
-        UserPassword = userPassword;
+        this.userPassword = userPassword;
     }
 
     public String getUserIdentityCard() {
-        return UserIdentityCard;
+        return userIdentityCard;
     }
 
     public void setUserIdentityCard(String userIdentityCard) {
-        UserIdentityCard = userIdentityCard;
+        this.userIdentityCard = userIdentityCard;
     }
 
     public String getUserPhone() {
-        return UserPhone;
+        return userPhone;
     }
 
     public void setUserPhone(String userPhone) {
-        UserPhone = userPhone;
+        this.userPhone = userPhone;
     }
 
     public String getUserAddress() {
-        return UserAddress;
+        return userAddress;
     }
 
     public void setUserAddress(String userAddress) {
-        UserAddress = userAddress;
+        this.userAddress = userAddress;
     }
 
     public String getUserImage() {
-        return UserImage;
+        return userImage;
     }
 
     public void setUserImage(String userImage) {
-        UserImage = userImage;
+        this.userImage = userImage;
     }
 
     public String getIsStaff() {
-        return IsStaff;
+        return isStaff;
     }
 
     public void setIsStaff(String isStaff) {
-        IsStaff = isStaff;
+        this.isStaff = isStaff;
     }
 
     public String getUserSecureCode() {
-        return UserSecureCode;
+        return userSecureCode;
     }
 
     public void setUserSecureCode(String userSecureCode) {
-        UserSecureCode = userSecureCode;
+        this.userSecureCode = userSecureCode;
     }
 
     public String getUserHolderId() {
-        return UserHolderId;
+        return userHolderId;
     }
 
     public void setUserHolderId(String userHolderId) {
-        UserHolderId = userHolderId;
+        this.userHolderId = userHolderId;
     }
 }
