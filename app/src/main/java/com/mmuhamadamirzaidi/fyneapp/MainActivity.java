@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id == R.id.nav_sign_out) {
 
             Intent menuIntent = new Intent(MainActivity.this, SignInActivity.class);
-            menuIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(menuIntent);
             Toast.makeText(MainActivity.this, "Sign out successfully", Toast.LENGTH_SHORT).show();
 
