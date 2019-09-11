@@ -12,8 +12,4 @@ public class Common {
     public static String cart_others_charge_global = "";
     public static String cart_grand_total_global = "";
 
-    public static int delivery_charge = 6;
-    public static int others_charge = 1;
-
-//    public static Order order;
 }

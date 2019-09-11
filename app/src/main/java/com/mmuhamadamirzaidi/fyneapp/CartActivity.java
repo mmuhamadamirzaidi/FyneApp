@@ -70,7 +70,7 @@ public class CartActivity extends AppCompatActivity {
         cart_button_place_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                             Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
+                Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
                 checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
                 checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
                 checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
@@ -92,11 +92,12 @@ public class CartActivity extends AppCompatActivity {
         //Calculate grand total
         int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0;
 
-        for (Order order:cart)
-            sub_total_initial+=(Integer.parseInt(order.getPrice()))*(Integer.parseInt(order.getQuantity()));
-            grand_total_initial+=sub_total_initial+Common.delivery_charge+Common.others_charge;
-            delivery_charge+=6;
-            others_charge+=1;
+        for (Order order:cart) {
+            delivery_charge = (Integer.parseInt("6"));
+            others_charge = (Integer.parseInt("1"));
+            sub_total_initial += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
+            grand_total_initial = sub_total_initial + 7;
+        }
 
         Locale locale = new Locale("en", "MY");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -107,8 +108,8 @@ public class CartActivity extends AppCompatActivity {
         cart_grand_total.setText(fmt.format(grand_total_initial));
 
         Common.cart_sub_total_global = (fmt.format(sub_total_initial));
-        Common.cart_delivery_charge_global = (fmt.format(Common.delivery_charge));
-        Common.cart_others_charge_global = (fmt.format(Common.others_charge));
+        Common.cart_delivery_charge_global = (fmt.format(delivery_charge));
+        Common.cart_others_charge_global = (fmt.format(others_charge));
         Common.cart_grand_total_global = (fmt.format(grand_total_initial));
 
     }

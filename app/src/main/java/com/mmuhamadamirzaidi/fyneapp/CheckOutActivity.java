@@ -79,6 +79,7 @@ public class CheckOutActivity extends AppCompatActivity {
                         .setValue(orderRequest);
 
                 //Clear cart item
+
                 Common.cart_sub_total_global = "";
                 Common.cart_delivery_charge_global = "";
                 Common.cart_others_charge_global = "";
