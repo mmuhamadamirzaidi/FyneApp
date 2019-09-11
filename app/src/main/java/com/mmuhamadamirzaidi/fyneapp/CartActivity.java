@@ -90,13 +90,15 @@ public class CartActivity extends AppCompatActivity {
         recycler_cart.setAdapter(cartAdapter);
 
         //Calculate grand total
-        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0;
+        int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0, total_charge;
 
         for (Order order:cart) {
             delivery_charge = (Integer.parseInt("6"));
             others_charge = (Integer.parseInt("1"));
+            total_charge = delivery_charge + others_charge;
+
             sub_total_initial += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
-            grand_total_initial = sub_total_initial + 7;
+            grand_total_initial = sub_total_initial + total_charge;
         }
 
         Locale locale = new Locale("en", "MY");
