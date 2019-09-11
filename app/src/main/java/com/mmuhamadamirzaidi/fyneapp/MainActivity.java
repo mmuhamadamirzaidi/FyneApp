@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_holders) {
 
-
             Toast.makeText(MainActivity.this, "Holders", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_cart) {

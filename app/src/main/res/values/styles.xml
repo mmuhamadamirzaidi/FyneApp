@@ -34,11 +34,9 @@
     <style name="MonstserratMedium" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/mm</item>
         <item name="android:textColor">@color/textColorAccent</item>
+<!--        <item name="android:font">@font/mm</item>-->
     </style>
 
-    <style name="NavigationView">
-        <item name="android:listDivider">@color/disable</item>
-    </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:fontFamily">@font/mm</item>

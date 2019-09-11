@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single" android:id="@+id/menu">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_products"
             android:icon="@drawable/ic_spa_drawer_24dp"
@@ -32,21 +32,19 @@
             android:id="@+id/news"
             android:icon="@drawable/ic_public_drawer_24dp"
             android:title="News" />
-    </group>
 
-    <group android:checkableBehavior="single" android:id="@+id/menu2">
-            <item
-                android:id="@+id/nav_account"
-                android:icon="@drawable/ic_person_drawer_24dp"
-                android:title="Account" />
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_settings_drawer_24dp"
-                android:title="Settings" />
-            <item
-                android:id="@+id/nav_sign_out"
-                android:icon="@drawable/ic_send_drawer_24dp"
-                android:title="Sign Out" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_person_drawer_24dp"
+            android:title="Account" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_drawer_24dp"
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/ic_send_drawer_24dp"
+            android:title="Sign Out" />
     </group>
 
 </menu>

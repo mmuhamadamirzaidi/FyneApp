@@ -55,6 +55,7 @@ public class OrderStatusActivity extends AppCompatActivity {
 //                viewHolder.item_order_date.setText(model.);
                 viewHolder.item_order_price.setText(model.getGrandTotal());
                 viewHolder.item_order_status.setText(convertCodeToStatus(model.getStatus()));
+
             }
         };
         recycler_order.setAdapter(adapter);
