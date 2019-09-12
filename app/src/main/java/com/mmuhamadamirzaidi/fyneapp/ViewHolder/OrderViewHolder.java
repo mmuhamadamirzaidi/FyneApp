@@ -14,6 +14,10 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     private ItemClickListener itemClickListener;
 
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+
     public OrderViewHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -25,10 +29,10 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
         itemView.setOnClickListener(this);
     }
 
-    public OrderViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
-        super(itemView);
-        this.itemClickListener = itemClickListener;
-    }
+//    public OrderViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
+//        super(itemView);
+//        this.itemClickListener = itemClickListener;
+//    }
 
     @Override
     public void onClick(View v) {

@@ -1,15 +1,19 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
+import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.OrderRequest;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.OrderViewHolder;
 
@@ -49,12 +53,33 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<OrderRequest, OrderViewHolder>(OrderRequest.class, R.layout.item_order, OrderViewHolder.class, orderrequest.orderByChild("userPhone")) {
             @Override
-            protected void populateViewHolder(OrderViewHolder viewHolder, OrderRequest model, int position) {
+            protected void populateViewHolder(OrderViewHolder viewHolder, final OrderRequest model, int position) {
 
                 viewHolder.item_order_id.setText(adapter.getRef(position).getKey());
 //                viewHolder.item_order_date.setText(model.);
                 viewHolder.item_order_price.setText(model.getGrandTotal());
                 viewHolder.item_order_status.setText(convertCodeToStatus(model.getStatus()));
+
+//                final OrderRequest clickItem = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+
+                        Toast.makeText(OrderStatusActivity.this, "Order Id: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
+
+                        Intent order_detail = new Intent(OrderStatusActivity.this, OrderDetailActivity.class);
+                        order_detail.putExtra("orderId", adapter.getRef(position).getKey());
+
+                        order_detail.putExtra("status", convertCodeToStatus(model.getStatus()));
+                        order_detail.putExtra("userName", model.getUserName());
+                        order_detail.putExtra("userAddress", model.getUserAddress());
+                        order_detail.putExtra("userPhone", model.getUserPhone());
+                        order_detail.putExtra("grandTotal", model.getGrandTotal());
+
+                        Common.currentRequest = model;
+                        startActivity(order_detail);
+                    }
+                });
 
             }
         };

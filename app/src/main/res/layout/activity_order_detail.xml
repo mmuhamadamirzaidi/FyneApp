@@ -65,6 +65,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/order_detail_grand_total"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
@@ -122,20 +123,46 @@
             </LinearLayout>
 
             <LinearLayout
+                android:weightSum="4"
                 android:paddingLeft="10dp"
                 android:paddingRight="8dp"
                 android:paddingTop="5dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:textColor="@color/textColorPrimary"
-                    android:id="@+id/ED"
-                    android:fontFamily="@font/ml"
+                <LinearLayout
+                    android:layout_weight="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#1515762515218"/>
+                    android:orientation="horizontal"
+                    android:gravity="left|center_vertical">
+
+                    <TextView
+                        android:textColor="@color/textColorPrimary"
+                        android:fontFamily="@font/ml"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="left|center_vertical">
+
+                    <TextView
+                        android:id="@+id/order_detail_id"
+                        android:textColor="@color/textColorPrimary"
+                        android:fontFamily="@font/ml"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3131"/>
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -165,7 +192,7 @@
             <LinearLayout
                 android:weightSum="4"
                 android:paddingLeft="10dp"
-                android:paddingRight="8dp"
+                android:paddingRight="10dp"
                 android:paddingTop="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -197,7 +224,7 @@
                     android:gravity="right|center_vertical">
 
                     <TextView
-                        android:id="@+id/rrg"
+                        android:id="@+id/order_detail_status"
                         android:textColor="@color/textColorPrimary"
                         android:fontFamily="@font/mm"
                         android:layout_width="wrap_content"
@@ -222,55 +249,13 @@
 
                 <TextView
                     android:textColor="@color/textColorPrimaryDark"
-                    android:id="@+id/detail_description_title"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/mm"
-                    android:layout_weight="10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delivery Informations"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingTop="5dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textColor="@color/textColorPrimary"
-                    android:id="@+id/detail_product_description"
-                    android:fontFamily="@font/ml"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."/>
-
-
-            </LinearLayout>
-
-            // Description
-
-            <LinearLayout
-                android:weightSum="10"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="30dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textColor="@color/textColorPrimaryDark"
                     android:id="@+id/gghg"
                     android:textSize="15sp"
                     android:fontFamily="@font/mm"
                     android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product's Description"/>
+                    android:text="Delivery Informations"/>
 
             </LinearLayout>
 
@@ -289,7 +274,7 @@
 
                     <TextView
                         android:textColor="@color/textColorPrimary"
-                        android:id="@+id/detail_produghhcnht_description"
+                        android:id="@+id/order_detail_full_name"
                         android:fontFamily="@font/mr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -307,7 +292,7 @@
 
                     <TextView
                         android:textColor="@color/textColorPrimary"
-                        android:id="@+id/detail_produghhct_descnhnription"
+                        android:id="@+id/order_detail_address"
                         android:fontFamily="@font/ml"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -325,7 +310,7 @@
 
                     <TextView
                         android:textColor="@color/textColorPrimary"
-                        android:id="@+id/detail_produghhct_nhdescription"
+                        android:id="@+id/order_detail_phone"
                         android:fontFamily="@font/ml"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -499,7 +484,7 @@
                         android:layout_weight="0"
                         android:fontFamily="@font/mr"
                         android:gravity="end"
-                        android:text="RM15.00" />
+                        android:text="0" />
 
                 </LinearLayout>
 
@@ -525,7 +510,7 @@
                         android:text="Grand Total" />
 
                     <TextView
-                        android:id="@+id/cart_grand_total"
+                        android:id="@+id/order_detail_cart_grand_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
