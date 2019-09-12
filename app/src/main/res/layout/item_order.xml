@@ -68,6 +68,15 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"/>
 
+                        <TextView
+                            android:textColor="@color/textColorPrimaryDark"
+                            android:layout_weight="0"
+                            android:gravity="right"
+                            android:fontFamily="@font/mm"
+                            android:text="#"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
                     </LinearLayout>
 
                     <LinearLayout

@@ -30,9 +30,9 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recycler_cart;
     RecyclerView.LayoutManager layoutManager;
 
-    TextView cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total, cart_discount;
+    TextView cart_add_new_product, cart_sub_total, cart_delivery_charge, cart_others_charge, cart_grand_total, cart_discount;
 
-    Button cart_button_place_order, cart_button_order_detail;
+    Button cart_button_place_order;
 
     List<Order> cart = new ArrayList<>();
 
@@ -53,6 +53,8 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recycler_cart.setLayoutManager(layoutManager);
 
+        cart_add_new_product = (TextView) findViewById(R.id.cart_add_new_product);
+
         cart_sub_total = (TextView) findViewById(R.id.cart_sub_total);
         cart_delivery_charge = (TextView) findViewById(R.id.cart_delivery_charge);
         cart_others_charge = (TextView) findViewById(R.id.cart_others_charge);
@@ -60,7 +62,6 @@ public class CartActivity extends AppCompatActivity {
         cart_discount = (TextView) findViewById(R.id.cart_discount);
 
         cart_button_place_order = (Button) findViewById(R.id.cart_button_place_order);
-        cart_button_order_detail = (Button) findViewById(R.id.cart_button_order_detail);
 
         cart_button_place_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,11 +75,11 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        cart_button_order_detail.setOnClickListener(new View.OnClickListener() {
+        cart_add_new_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent orderIntent = new Intent(CartActivity.this, OrderStatusActivity.class);
-                startActivity(orderIntent);
+                Intent mainIntent = new Intent(CartActivity.this, MainActivity.class);
+                startActivity(mainIntent);
             }
         });
 
