@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -25,6 +27,8 @@ public class OrderStatusActivity extends AppCompatActivity {
     RecyclerView recycler_order;
     RecyclerView.LayoutManager layoutManager;
 
+
+
     FirebaseRecyclerAdapter<OrderRequest, OrderViewHolder> adapter;
 
     @Override
@@ -36,9 +40,12 @@ public class OrderStatusActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
+
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         orderrequest = database.getReference("OrderRequest");
+
+
 
         // Load category
         recycler_order = (RecyclerView) findViewById(R.id.recycler_order);
@@ -47,13 +54,17 @@ public class OrderStatusActivity extends AppCompatActivity {
         recycler_order.setLayoutManager(layoutManager);
 
         loadOrder(Common.currentUser.getUserPhone());
+
+
     }
 
     private void loadOrder(String userPhone) {
 
         adapter = new FirebaseRecyclerAdapter<OrderRequest, OrderViewHolder>(OrderRequest.class, R.layout.item_order, OrderViewHolder.class, orderrequest.orderByChild("userPhone")) {
             @Override
-            protected void populateViewHolder(OrderViewHolder viewHolder, final OrderRequest model, int position) {
+            protected void populateViewHolder(final OrderViewHolder viewHolder, final OrderRequest model, int position) {
+
+
 
                 viewHolder.item_order_id.setText(adapter.getRef(position).getKey());
 //                viewHolder.item_order_date.setText(model.);
@@ -78,6 +89,8 @@ public class OrderStatusActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
+
+
                         Toast.makeText(OrderStatusActivity.this, "Order Id: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
 
                         Intent order_detail = new Intent(OrderStatusActivity.this, OrderDetailActivity.class);
@@ -91,6 +104,52 @@ public class OrderStatusActivity extends AppCompatActivity {
 
                         Common.currentRequest = model;
                         startActivity(order_detail);
+
+                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
+                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+                    }
+                });
+
+                viewHolder.item_order_edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        viewHolder.item_order_edit.setVisibility(View.GONE);
+                        viewHolder.item_order_edit_new.setVisibility(View.VISIBLE);
+                        viewHolder.item_order_edit_layout.setVisibility(View.VISIBLE);
+
+                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
+                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
+                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                });
+
+                viewHolder.item_order_edit_new.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
+                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+
+                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
+                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
+                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+                            }
+                        });
                     }
                 });
 
