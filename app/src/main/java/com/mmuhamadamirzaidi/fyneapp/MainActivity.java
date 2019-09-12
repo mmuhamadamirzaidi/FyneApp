@@ -1,5 +1,6 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,13 +22,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Category;
+import com.mmuhamadamirzaidi.fyneapp.Model.User;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.CategoryViewHolder;
 import com.squareup.picasso.Picasso;
+
+import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         // Init Firebase
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         category = database.getReference("Category");
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -118,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         recycler_category.setAdapter(adapter);
+    }
+
+    private void SendUserToSignInActivity() {
+        Intent mainIntent = new Intent(MainActivity.this, SignInActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
     }
 
     @Override
@@ -189,6 +204,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
 
         }else if (id == R.id.nav_sign_out) {
+
+            //Forget user information
+            Paper.book().destroy();
 
             Intent menuIntent = new Intent(MainActivity.this, SignInActivity.class);
             menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

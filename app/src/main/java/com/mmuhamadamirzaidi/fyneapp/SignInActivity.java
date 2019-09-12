@@ -20,6 +20,7 @@ import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Model.User;
 
 import dmax.dialog.SpotsDialog;
+import io.paperdb.Paper;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private CheckBox sign_in_remember_me;
 
-    private AlertDialog dialog;
+    private AlertDialog dialog, dialog_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +48,40 @@ public class SignInActivity extends AppCompatActivity {
 
         // Custom dialog
         dialog = new SpotsDialog.Builder().setContext(SignInActivity.this).setTheme(R.style.SignIn).build();
+        dialog_loading = new SpotsDialog.Builder().setContext(SignInActivity.this).setTheme(R.style.Loading).build();
+
+        // Init Paper
+        Paper.init(this);
 
         // Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
+
+        //Check remember information
+        String remember_user_phone = Paper.book().read(Common.USER_PHONE_KEY);
+        String remember_user_password = Paper.book().read(Common.USER_PASSWORD_KEY);
+
+        if (remember_user_phone != null && remember_user_password != null){
+
+            if (!remember_user_phone.isEmpty() && !remember_user_password.isEmpty()){
+                redirectSignIn(remember_user_phone, remember_user_password);
+            }
+            else {
+                SendUserToSignInActivity();
+            }
+        }
 
         button_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.show();
+
+                //If checked, remember user phone and password
+                if (sign_in_remember_me.isChecked()){
+                    Paper.book().write(Common.USER_PHONE_KEY, sign_in_phone.getText().toString().trim());
+                    Paper.book().write(Common.USER_PASSWORD_KEY, sign_in_password.getText().toString().trim());
+                }
 
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -99,6 +124,61 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(signUpActivity);
             }
         });
+    }
+
+    private void redirectSignIn(final String remember_user_phone, final String remember_user_password) {
+
+        dialog_loading.show();
+
+        // Init Firebase
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = database.getReference("User");
+
+        table_user.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // Check if user exist
+                if (dataSnapshot.child(remember_user_phone).exists()) {
+
+                    dialog_loading.dismiss();
+                    // Get user information
+                    User user = dataSnapshot.child(remember_user_phone).getValue(User.class);
+                    user.setUserPhone(remember_user_phone);
+
+                    if (user.getUserPassword().equals(remember_user_password)) {
+                        Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
+                        Common.currentUser = user;
+
+                        Intent splash = new Intent(SignInActivity.this, MainActivity.class);
+                        startActivity(splash);
+                        finish();
+
+                    } else {
+                        Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                        SendUserToSignInActivity();
+                    }
+                }
+                else {
+                    dialog_loading.dismiss();
+                    Toast.makeText(SignInActivity.this, "User don't exist in system!", Toast.LENGTH_SHORT).show();
+                    SendUserToSignInActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void SendUserToSignInActivity() {
+        Intent mainIntent = new Intent(SignInActivity.this, SignInActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
     }
 
     private void SendUserToMainActivity() {

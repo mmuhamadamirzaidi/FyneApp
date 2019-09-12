@@ -14,6 +14,7 @@ public class Common {
     public static String cart_grand_total_global = "";
     public static String cart_discount_global = "";
 
-//    public static String status_progress = "";
+    public static final String USER_PHONE_KEY = "User";
+    public static final String USER_PASSWORD_KEY = "Password";
 
 }
