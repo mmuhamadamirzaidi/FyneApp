@@ -48,6 +48,7 @@
                     android:text="Creatic Vitamin Perming Lotion"/>
 
                 <ImageView
+                    android:id="@+id/product_share"
                     android:paddingLeft="10dp"
                     android:tint="@color/colorPrimaryDark"
                     android:src="@drawable/ic_share_primary_dark_24dp"
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
+                    android:id="@+id/product_wishlist"
                     android:paddingLeft="10dp"
                     android:tint="@color/colorPrimaryDark"
                     android:src="@drawable/ic_bookmark_border_primary_dark_24dp"

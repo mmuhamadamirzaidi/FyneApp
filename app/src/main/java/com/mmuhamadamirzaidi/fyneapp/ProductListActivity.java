@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mmuhamadamirzaidi.fyneapp.Database.Database;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Category;
 import com.mmuhamadamirzaidi.fyneapp.Model.Product;
@@ -52,6 +53,9 @@ public class ProductListActivity extends AppCompatActivity {
 
     MaterialSearchBar product_list_search_bar;
 
+    //Wishlist
+    Database wishlistDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,9 @@ public class ProductListActivity extends AppCompatActivity {
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         product = database.getReference("Product");
+
+        //Local wishlist database
+        wishlistDB = new Database(this);
 
         // Load category
         recycler_product = (RecyclerView) findViewById(R.id.recycler_product);
@@ -179,12 +186,33 @@ public class ProductListActivity extends AppCompatActivity {
     private void loadProduct(String categoryId) {
         adapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(Product.class, R.layout.item_products, ProductViewHolder.class, product.orderByChild("categoryId").equalTo(categoryId)) {
             @Override
-            protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
+            protected void populateViewHolder(final ProductViewHolder viewHolder, final Product model, final int position) {
 
                 viewHolder.product_name.setText(model.getProductName());
                 viewHolder.product_notification.setText(model.getNotificationNo());
 
                 Picasso.with(getBaseContext()).load(model.getProductImage()).into(viewHolder.product_image);
+
+                //Add wishlist
+                if (wishlistDB.currentWishlist(adapter.getRef(position).getKey()))
+                    viewHolder.product_wishlist.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+
+                //Remove wishlist
+                viewHolder.product_wishlist.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!wishlistDB.currentWishlist(adapter.getRef(position).getKey())){
+                            wishlistDB.addToWishlist(adapter.getRef(position).getKey());
+                            viewHolder.product_wishlist.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+                            Toast.makeText(ProductListActivity.this, model.getProductName()+" added to wishlist!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            wishlistDB.clearWishlist(adapter.getRef(position).getKey());
+                            viewHolder.product_wishlist.setImageResource(R.drawable.ic_bookmark_border_primary_dark_24dp);
+                            Toast.makeText(ProductListActivity.this, model.getProductName()+" removed from wishlist!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
                 final Product clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {

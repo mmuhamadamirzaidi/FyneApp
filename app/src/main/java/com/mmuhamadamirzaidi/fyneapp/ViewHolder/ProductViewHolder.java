@@ -11,7 +11,7 @@ import com.mmuhamadamirzaidi.fyneapp.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public ImageView product_image;
+    public ImageView product_image, product_wishlist, product_share;
     public TextView product_name, product_notification;
 
     private ItemClickListener itemClickListener;
@@ -24,6 +24,9 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         super(itemView);
 
         product_image = (ImageView) itemView.findViewById(R.id.product_image);
+        product_wishlist = (ImageView) itemView.findViewById(R.id.product_wishlist);
+        product_share = (ImageView) itemView.findViewById(R.id.product_share);
+
         product_name = (TextView) itemView.findViewById(R.id.product_name);
         product_notification = (TextView) itemView.findViewById(R.id.product_notification);
 

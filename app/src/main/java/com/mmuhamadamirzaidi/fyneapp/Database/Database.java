@@ -49,6 +49,8 @@ public class Database extends SQLiteAssetHelper {
         return result;
     }
 
+    //Cart
+
     public void addToCart(Order order){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -69,5 +71,38 @@ public class Database extends SQLiteAssetHelper {
         String query = String.format("DELETE FROM OrderDetail");
 
         db.execSQL(query);
+    }
+
+    //Wishlist
+
+    public void addToWishlist(String productId){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("INSERT INTO Wishlist(ProductId) VALUES ('%s');", productId);
+
+        db.execSQL(query);
+    }
+
+    public void clearWishlist(String productId){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("DELETE FROM Wishlist WHERE productId = '%s';", productId);
+
+        db.execSQL(query);
+    }
+
+    public boolean currentWishlist(String productId){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = String.format("SELECT * FROM Wishlist WHERE productId = '%s';", productId);
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
     }
 }
