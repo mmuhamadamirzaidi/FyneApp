@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,11 @@ public class SignInActivity extends AppCompatActivity {
 
     private AlertDialog dialog, dialog_loading;
 
+    FirebaseDatabase database;
+    DatabaseReference table_user;
+
+    private TextView sign_in_forget_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,8 @@ public class SignInActivity extends AppCompatActivity {
 
         sign_in_remember_me = findViewById(R.id.sign_in_remember_me);
 
+        sign_in_forget_password = findViewById(R.id.sign_in_forget_password);
+
         sign_in_remember_me.setTypeface(ResourcesCompat.getFont(getBaseContext(), R.font.mr));
 
         // Custom dialog
@@ -54,8 +62,8 @@ public class SignInActivity extends AppCompatActivity {
         Paper.init(this);
 
         // Init Firebase
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
+        database = FirebaseDatabase.getInstance();
+        table_user = database.getReference("User");
 
         //Check remember information
         String remember_user_phone = Paper.book().read(Common.USER_PHONE_KEY);
@@ -70,6 +78,14 @@ public class SignInActivity extends AppCompatActivity {
                 SendUserToSignInActivity();
             }
         }
+
+        sign_in_forget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgetPasswordActivity = new Intent(SignInActivity.this, ForgetPasswordActivity.class);
+                startActivity(forgetPasswordActivity);
+            }
+        });
 
         button_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,8 +147,8 @@ public class SignInActivity extends AppCompatActivity {
         dialog_loading.show();
 
         // Init Firebase
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference table_user = database.getReference("User");
+        database = FirebaseDatabase.getInstance();
+        table_user = database.getReference("User");
 
         table_user.addValueEventListener(new ValueEventListener() {
             @Override
