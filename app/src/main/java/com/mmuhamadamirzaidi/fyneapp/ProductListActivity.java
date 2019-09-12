@@ -133,7 +133,7 @@ public class ProductListActivity extends AppCompatActivity {
 
     private void startSearch(CharSequence text) {
 
-        searchAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(Product.class, R.layout.item_products, ProductViewHolder.class, product.orderByChild("categoryId").equalTo(text.toString().trim())) {
+        searchAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(Product.class, R.layout.item_products, ProductViewHolder.class, product.orderByChild("productName").equalTo(text.toString().trim())) {
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
                 viewHolder.product_name.setText(model.getProductName());
@@ -149,7 +149,7 @@ public class ProductListActivity extends AppCompatActivity {
                         Toast.makeText(ProductListActivity.this, "Product Name: "+clickItem.getProductName()+". Notification No: "+clickItem.getNotificationNo(), Toast.LENGTH_SHORT).show();
 
                         Intent product_detail = new Intent(ProductListActivity.this, ProductDetailActivity.class);
-                        product_detail.putExtra("productId", adapter.getRef(position).getKey());
+                        product_detail.putExtra("productId", searchAdapter.getRef(position).getKey());
                         startActivity(product_detail);
                     }
                 });
