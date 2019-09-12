@@ -49,7 +49,7 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         // Load category
         recycler_order = (RecyclerView) findViewById(R.id.recycler_order);
-        recycler_order.setHasFixedSize(true);
+//        recycler_order.setHasFixedSize(true); //Need to remove if using Firebase Recycler Adapter/Disable for API 19 and below
         layoutManager = new LinearLayoutManager(this);
         recycler_order.setLayoutManager(layoutManager);
 

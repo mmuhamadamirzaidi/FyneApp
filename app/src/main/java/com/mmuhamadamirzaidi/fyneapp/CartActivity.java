@@ -1,7 +1,6 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,15 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Database.Database;
 import com.mmuhamadamirzaidi.fyneapp.Model.Order;
-import com.mmuhamadamirzaidi.fyneapp.Model.OrderRequest;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.CartAdapter;
 
 import java.text.NumberFormat;
@@ -53,7 +48,7 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recycler_cart.setLayoutManager(layoutManager);
 
-        cart_add_new_product = (TextView) findViewById(R.id.cart_add_new_product);
+        cart_add_new_product = (TextView) findViewById(R.id.cart_add_new_item);
 
         cart_sub_total = (TextView) findViewById(R.id.cart_sub_total);
         cart_delivery_charge = (TextView) findViewById(R.id.cart_delivery_charge);

@@ -67,7 +67,7 @@ public class ProductListActivity extends AppCompatActivity {
 
         // Load category
         recycler_product = (RecyclerView) findViewById(R.id.recycler_product);
-        recycler_product.setHasFixedSize(true);
+//        recycler_product.setHasFixedSize(true); //Need to remove if using Firebase Recycler Adapter/Disable for API 19 and below
         layoutManager = new LinearLayoutManager(this);
         recycler_product.setLayoutManager(layoutManager);
 

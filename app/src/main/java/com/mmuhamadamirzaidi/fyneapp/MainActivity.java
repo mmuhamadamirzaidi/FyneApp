@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Load category
         recycler_category = (RecyclerView) findViewById(R.id.recycler_category);
-        recycler_category.setHasFixedSize(true);
+//        recycler_category.setHasFixedSize(true); //Need to remove if using Firebase Recycler Adapter/Disable for API 19 and below
         layoutManager = new LinearLayoutManager(this);
         recycler_category.setLayoutManager(layoutManager);
 
