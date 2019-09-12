@@ -30,5 +30,17 @@ public class OrderDetailActivity extends AppCompatActivity {
         order_detail_address.setText(getIntent().getStringExtra("userAddress"));
         order_detail_phone.setText(getIntent().getStringExtra("userPhone"));
         order_detail_cart_grand_total.setText(getIntent().getStringExtra("grandTotal"));
+
+        if (getIntent().getStringExtra("status").equals("Processing")){
+            order_detail_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
+        }
+        else if (getIntent().getStringExtra("status").equals("On the way")){
+            order_detail_status.setTextColor(getResources().getColor(R.color.ontheway));
+        }
+        else if (getIntent().getStringExtra("status").equals("Delivered")){
+            order_detail_status.setTextColor(getResources().getColor(R.color.delivered));
+        }
+        else
+            order_detail_status.setTextColor(getResources().getColor(R.color.cancel));
     }
 }

@@ -60,6 +60,19 @@ public class OrderStatusActivity extends AppCompatActivity {
                 viewHolder.item_order_price.setText(model.getGrandTotal());
                 viewHolder.item_order_status.setText(convertCodeToStatus(model.getStatus()));
 
+                if (convertCodeToStatus(model.getStatus()).equals("Processing")){
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
+                }
+                else if (convertCodeToStatus(model.getStatus()).equals("On the way")){
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.ontheway));
+                }
+                else if (convertCodeToStatus(model.getStatus()).equals("Delivered")){
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.delivered));
+                }
+                else
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.cancel));
+
+
 //                final OrderRequest clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
