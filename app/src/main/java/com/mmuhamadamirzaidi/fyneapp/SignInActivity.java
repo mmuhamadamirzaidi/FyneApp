@@ -2,6 +2,7 @@ package com.mmuhamadamirzaidi.fyneapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,47 +90,57 @@ public class SignInActivity extends AppCompatActivity {
 
         button_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 dialog.show();
 
-                //If checked, remember user phone and password
-                if (sign_in_remember_me.isChecked()){
-                    Paper.book().write(Common.USER_PHONE_KEY, sign_in_phone.getText().toString().trim());
-                    Paper.book().write(Common.USER_PASSWORD_KEY, sign_in_password.getText().toString().trim());
-                }
+                if (Common.isConnectedToInternet(getBaseContext())){
 
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    //If checked, remember user phone and password
+                    if (sign_in_remember_me.isChecked()){
+                        Paper.book().write(Common.USER_PHONE_KEY, sign_in_phone.getText().toString().trim());
+                        Paper.book().write(Common.USER_PASSWORD_KEY, sign_in_password.getText().toString().trim());
+                    }
 
-                        // Check if user exist
-                        if (dataSnapshot.child(sign_in_phone.getText().toString().trim()).exists()) {
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            dialog.dismiss();
-                            // Get user information
-                            User user = dataSnapshot.child(sign_in_phone.getText().toString().trim()).getValue(User.class);
-                            user.setUserPhone(sign_in_phone.getText().toString().trim());
+                            // Check if user exist
+                            if (dataSnapshot.child(sign_in_phone.getText().toString().trim()).exists()) {
 
-                            if (user.getUserPassword().equals(sign_in_password.getText().toString().trim())) {
-                                Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
-                                Common.currentUser = user;
-                                SendUserToMainActivity();
-                            } else {
-                                Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                                // Get user information
+                                User user = dataSnapshot.child(sign_in_phone.getText().toString().trim()).getValue(User.class);
+                                user.setUserPhone(sign_in_phone.getText().toString().trim());
+
+                                if (user.getUserPassword().equals(sign_in_password.getText().toString().trim())) {
+                                    Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
+
+                                    Common.currentUser = user;
+                                    SendUserToMainActivity();
+                                } else {
+                                    Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else {
+                                dialog.dismiss();
+                                Toast.makeText(SignInActivity.this, "User don't exist in system!", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else {
-                            dialog.dismiss();
-                            Toast.makeText(SignInActivity.this, "User don't exist in system!", Toast.LENGTH_SHORT).show();
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                }
+                else{
+                    dialog.dismiss();
+                    Toast.makeText(SignInActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+//                    return;
+                }
             }
         });
 

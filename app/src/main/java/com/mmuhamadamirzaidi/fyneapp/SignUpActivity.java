@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Model.User;
 
 import dmax.dialog.SpotsDialog;
@@ -56,36 +57,43 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                dialog.show();
+                if (Common.isConnectedToInternet(getBaseContext())) {
 
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    dialog.show();
 
-                        // Check if user exist
-                        if (dataSnapshot.child(sign_up_phone.getText().toString().trim()).exists()) {
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            dialog.dismiss();
-                            Toast.makeText(SignUpActivity.this, "Phone number already exist!", Toast.LENGTH_SHORT).show();
+                            // Check if user exist
+                            if (dataSnapshot.child(sign_up_phone.getText().toString().trim()).exists()) {
+
+                                dialog.dismiss();
+                                Toast.makeText(SignUpActivity.this, "Phone number already exist!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                dialog.dismiss();
+
+                                // Get user information
+                                User user = new User(sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim(), sign_up_identity_card, sign_up_phone.getText().toString().trim(), sign_up_address, sign_up_image, sign_up_is_staff, sign_up_secure_code, sign_up_holder_id);
+                                table_user.child(sign_up_phone.getText().toString().trim()).setValue(user);
+
+                                Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
+                                SendUserToSignInActivity();
+                                finish();
+                            }
                         }
-                        else {
-                            dialog.dismiss();
 
-                            // Get user information
-                            User user = new User (sign_up_fullname.getText().toString().trim(), sign_up_password.getText().toString().trim(), sign_up_identity_card, sign_up_phone.getText().toString().trim(), sign_up_address, sign_up_image, sign_up_is_staff, sign_up_secure_code, sign_up_holder_id);
-                            table_user.child(sign_up_phone.getText().toString().trim()).setValue(user);
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                            Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
-                            SendUserToSignInActivity();
-                            finish();
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                    });
+                }
+                else{
+                    dialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+//                    return;
+                }
             }
         });
 

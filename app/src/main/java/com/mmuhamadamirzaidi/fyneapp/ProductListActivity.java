@@ -223,6 +223,7 @@ public class ProductListActivity extends AppCompatActivity {
 
                         Intent product_detail = new Intent(ProductListActivity.this, ProductDetailActivity.class);
                         product_detail.putExtra("productId", adapter.getRef(position).getKey());
+//                        product_detail.putExtra("notificationNo", model.getNotificationNo());
                         startActivity(product_detail);
                     }
                 });

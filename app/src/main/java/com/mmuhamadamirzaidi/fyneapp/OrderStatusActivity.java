@@ -71,13 +71,13 @@ public class OrderStatusActivity extends AppCompatActivity {
                 viewHolder.item_order_price.setText(model.getGrandTotal());
                 viewHolder.item_order_status.setText(convertCodeToStatus(model.getStatus()));
 
-                if (convertCodeToStatus(model.getStatus()).equals("Processing")){
+                if (model.getStatus().equals("0")){
                     viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
                 }
-                else if (convertCodeToStatus(model.getStatus()).equals("On the way")){
+                else if (model.getStatus().equals("1")){
                     viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.ontheway));
                 }
-                else if (convertCodeToStatus(model.getStatus()).equals("Delivered")){
+                else if (model.getStatus().equals("2")){
                     viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.delivered));
                 }
                 else
@@ -89,7 +89,10 @@ public class OrderStatusActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
-
+//                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+//                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
+//                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+//                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
 
                         Toast.makeText(OrderStatusActivity.this, "Order Id: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
 
@@ -105,53 +108,50 @@ public class OrderStatusActivity extends AppCompatActivity {
                         Common.currentRequest = model;
                         startActivity(order_detail);
 
-                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
-                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
-                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
-                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+
                     }
                 });
 
-                viewHolder.item_order_edit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        viewHolder.item_order_edit.setVisibility(View.GONE);
-                        viewHolder.item_order_edit_new.setVisibility(View.VISIBLE);
-                        viewHolder.item_order_edit_layout.setVisibility(View.VISIBLE);
-
-                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
-                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
-                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
-                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
-                            }
-                        });
-                    }
-                });
-
-                viewHolder.item_order_edit_new.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-
-                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
-                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
-                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
-
-                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
-                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
-                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
-                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
-                            }
-                        });
-                    }
-                });
+//                viewHolder.item_order_edit.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                        viewHolder.item_order_edit.setVisibility(View.GONE);
+//                        viewHolder.item_order_edit_new.setVisibility(View.VISIBLE);
+//                        viewHolder.item_order_edit_layout.setVisibility(View.VISIBLE);
+//
+//                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
+//                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+//                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
+//                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+//                            }
+//                        });
+//                    }
+//                });
+//
+//                viewHolder.item_order_edit_new.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//
+//                        viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+//                        viewHolder.item_order_edit_new.setVisibility(View.GONE);
+//                        viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+//
+//                        viewHolder.item_order_test_edit.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Toast.makeText(OrderStatusActivity.this, "Test Edit", Toast.LENGTH_SHORT).show();
+//                                viewHolder.item_order_edit.setVisibility(View.VISIBLE);
+//                                viewHolder.item_order_edit_new.setVisibility(View.GONE);
+//                                viewHolder.item_order_edit_layout.setVisibility(View.GONE);
+//                            }
+//                        });
+//                    }
+//                });
 
             }
         };
@@ -163,7 +163,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         if (status.equals("0"))
             return "Processing";
         else if (status.equals("1"))
-            return "On the way";
+            return "Shipped";
         else if (status.equals("2"))
             return "Delivered";
         else

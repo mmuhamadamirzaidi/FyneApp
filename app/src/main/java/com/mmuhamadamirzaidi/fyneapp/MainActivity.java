@@ -1,6 +1,5 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,15 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Category;
-import com.mmuhamadamirzaidi.fyneapp.Model.User;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.CategoryViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -201,7 +196,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }else if (id == R.id.nav_settings) {
 
-            Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+            Intent settingIntent = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(settingIntent);
 
         }else if (id == R.id.nav_sign_out) {
 
