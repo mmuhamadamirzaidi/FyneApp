@@ -32,7 +32,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         if (getIntent().getStringExtra("status").equals("Processing")){
             order_detail_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
         }
-        else if (getIntent().getStringExtra("status").equals("On the way")){
+        else if (getIntent().getStringExtra("status").equals("Shipped")){
             order_detail_status.setTextColor(getResources().getColor(R.color.shipped));
         }
         else if (getIntent().getStringExtra("status").equals("Delivered")){

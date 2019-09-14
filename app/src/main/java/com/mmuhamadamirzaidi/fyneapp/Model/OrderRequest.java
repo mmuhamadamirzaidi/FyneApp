@@ -21,7 +21,7 @@ public class OrderRequest {
         this.userName = userName;
         this.userAddress = userAddress;
         this.grandTotal = grandTotal;
-        this.status = "0"; //Default 0:Processing, 1:On the way, 2:Delivered
+        this.status = "0"; //Default 0:Processing, 1:Shipped, 2:Delivered
         this.product = product;
     }
 
