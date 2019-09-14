@@ -4,8 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class OrderDetailActivity extends AppCompatActivity {
 
     TextView order_detail_grand_total, order_detail_id, order_detail_status, order_detail_full_name, order_detail_address, order_detail_phone, order_detail_cart_grand_total;
@@ -35,12 +33,12 @@ public class OrderDetailActivity extends AppCompatActivity {
             order_detail_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
         }
         else if (getIntent().getStringExtra("status").equals("On the way")){
-            order_detail_status.setTextColor(getResources().getColor(R.color.ontheway));
+            order_detail_status.setTextColor(getResources().getColor(R.color.shipped));
         }
         else if (getIntent().getStringExtra("status").equals("Delivered")){
             order_detail_status.setTextColor(getResources().getColor(R.color.delivered));
         }
         else
-            order_detail_status.setTextColor(getResources().getColor(R.color.cancel));
+            order_detail_status.setTextColor(getResources().getColor(R.color.cancelled));
     }
 }

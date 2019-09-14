@@ -7,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -75,13 +73,13 @@ public class OrderStatusActivity extends AppCompatActivity {
                     viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
                 }
                 else if (model.getStatus().equals("1")){
-                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.ontheway));
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.shipped));
                 }
                 else if (model.getStatus().equals("2")){
                     viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.delivered));
                 }
                 else
-                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.cancel));
+                    viewHolder.item_order_status.setTextColor(getResources().getColor(R.color.cancelled));
 
 
 //                final OrderRequest clickItem = model;

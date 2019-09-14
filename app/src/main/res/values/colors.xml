@@ -27,8 +27,8 @@
 
     //Order Status
     <color name="delivered">#10800C</color>
-    <color name="ontheway">#E4921F</color>
-    <color name="cancel">#941512</color>
+    <color name="shipped">#E4921F</color>
+    <color name="cancelled">#941512</color>
 
     //Others
     <color name="white">#ffffff</color>

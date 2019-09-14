@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Database.Database;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Order;
@@ -85,7 +86,14 @@ public class ProductDetailActivity extends AppCompatActivity {
             productId = getIntent().getStringExtra("productId");
         }
         if (!productId.isEmpty() && productId != null){
-            loadProductDetail(productId);
+
+            if (!Common.isConnectedToInternet(this)){
+                loadProductDetail(productId);
+            }
+            else{
+                Toast.makeText(ProductDetailActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

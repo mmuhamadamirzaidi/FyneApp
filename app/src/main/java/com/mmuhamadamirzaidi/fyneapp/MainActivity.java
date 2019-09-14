@@ -95,7 +95,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         layoutManager = new LinearLayoutManager(this);
         recycler_category.setLayoutManager(layoutManager);
 
-        loadCategory();
+        if (Common.isConnectedToInternet(this)){
+            loadCategory();
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadCategory() {
@@ -123,13 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recycler_category.setAdapter(adapter);
     }
 
-    private void SendUserToSignInActivity() {
-        Intent mainIntent = new Intent(MainActivity.this, SignInActivity.class);
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(mainIntent);
-        finish();
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -149,6 +147,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.refresh){
+            loadCategory();
+        }
 
         return super.onOptionsItemSelected(item);
     }

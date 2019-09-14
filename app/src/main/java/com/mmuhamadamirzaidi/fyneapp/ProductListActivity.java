@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Database.Database;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Category;
@@ -83,7 +84,13 @@ public class ProductListActivity extends AppCompatActivity {
             categoryId = getIntent().getStringExtra("categoryId");
         }
         if (!categoryId.isEmpty() && categoryId != null){
-            loadProduct(categoryId);
+
+            if (Common.isConnectedToInternet(this)){
+                loadProduct(categoryId);
+            }
+            else{
+                Toast.makeText(ProductListActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+            }
         }
 
         product_list_search_bar = (MaterialSearchBar) findViewById(R.id.product_list_search_bar);
