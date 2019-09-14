@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Database.Database;
@@ -58,17 +60,6 @@ public class CartActivity extends AppCompatActivity {
 
         cart_button_place_order = (Button) findViewById(R.id.cart_button_place_order);
 
-        cart_button_place_order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
-//                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
-//                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
-//                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
-                checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
-                startActivity(checkoutIntent);
-            }
-        });
 
         cart_add_new_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,13 +70,43 @@ public class CartActivity extends AppCompatActivity {
         });
 
         loadCartListProduct();
+
+        // If cart have an item
+        if (cart.size() > 0){
+
+            cart_button_place_order.setEnabled(true);
+
+            cart_button_place_order.setBackground(getResources().getDrawable(R.drawable.bgbtnsignin));
+            cart_button_place_order.setTextColor(getResources().getColor(R.color.white));
+
+            cart_button_place_order.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
+//                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
+//                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
+//                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
+                    checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
+                    startActivity(checkoutIntent);
+                }
+            });
+
+        }
+        else {
+
+            cart_button_place_order.setEnabled(false);
+
+            cart_button_place_order.setBackground(getResources().getDrawable(R.drawable.bgbtncreate));
+            cart_button_place_order.setTextColor(getResources().getColor(R.color.textColorAccent));
+
+        }
     }
 
     private void loadCartListProduct() {
 
         cart = new Database(this).getCart();
         cartAdapter = new CartAdapter(cart, this);
-
+        cartAdapter.notifyDataSetChanged(); //Detect any changes and update recycler view
         recycler_cart.setAdapter(cartAdapter);
 
         //Calculate grand total
@@ -117,5 +138,30 @@ public class CartActivity extends AppCompatActivity {
         Common.cart_discount_global = (fmt.format(discount));
         Common.cart_grand_total_global = (fmt.format(grand_total_initial));
 
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if (item.getTitle().equals(Common.DELETE_CART))
+            clearCart(item.getOrder());
+
+        return true;
+    }
+
+    private void clearCart(int position) {
+
+        //Remove item at List<Order> by position
+        cart.remove(position);
+
+        //After that, delete all old data from SQLite
+        new Database(this).clearCart();
+
+        //Finally, update new item List<Order> to SQLite
+        for (Order item:cart)
+            new Database(this).addToCart(item);
+
+        //Refresh cart list product
+        loadCartListProduct();
     }
 }

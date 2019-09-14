@@ -70,12 +70,18 @@ public class SignInActivity extends AppCompatActivity {
         String remember_user_phone = Paper.book().read(Common.USER_PHONE_KEY);
         String remember_user_password = Paper.book().read(Common.USER_PASSWORD_KEY);
 
-        if (remember_user_phone != null && remember_user_password != null){
+        if (remember_user_phone != null && remember_user_password != null) {
 
-            if (!remember_user_phone.isEmpty() && !remember_user_password.isEmpty()){
-                redirectSignIn(remember_user_phone, remember_user_password);
-            }
-            else {
+            if (!remember_user_phone.isEmpty() && !remember_user_password.isEmpty()) {
+
+                if (Common.isConnectedToInternet(getBaseContext())) {
+                    redirectSignIn(remember_user_phone, remember_user_password);
+                }
+                else {
+                    dialog.dismiss();
+                    Toast.makeText(SignInActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
                 SendUserToSignInActivity();
             }
         }
@@ -94,10 +100,10 @@ public class SignInActivity extends AppCompatActivity {
 
                 dialog.show();
 
-                if (Common.isConnectedToInternet(getBaseContext())){
+                if (Common.isConnectedToInternet(getBaseContext())) {
 
                     //If checked, remember user phone and password
-                    if (sign_in_remember_me.isChecked()){
+                    if (sign_in_remember_me.isChecked()) {
                         Paper.book().write(Common.USER_PHONE_KEY, sign_in_phone.getText().toString().trim());
                         Paper.book().write(Common.USER_PASSWORD_KEY, sign_in_password.getText().toString().trim());
                     }
@@ -122,8 +128,7 @@ public class SignInActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                            else {
+                            } else {
                                 dialog.dismiss();
                                 Toast.makeText(SignInActivity.this, "User don't exist in system!", Toast.LENGTH_SHORT).show();
                             }
@@ -135,8 +140,7 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     });
 
-                }
-                else{
+                } else {
                     dialog.dismiss();
                     Toast.makeText(SignInActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
 //                    return;
@@ -185,8 +189,7 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(SignInActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
                         SendUserToSignInActivity();
                     }
-                }
-                else {
+                } else {
                     dialog_loading.dismiss();
                     Toast.makeText(SignInActivity.this, "User don't exist in system!", Toast.LENGTH_SHORT).show();
                     SendUserToSignInActivity();

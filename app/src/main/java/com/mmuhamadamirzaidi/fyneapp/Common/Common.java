@@ -21,6 +21,8 @@ public class Common {
     public static final String USER_PHONE_KEY = "User";
     public static final String USER_PASSWORD_KEY = "Password";
 
+    public static final String DELETE_CART = "Delete";
+
     public static boolean isConnectedToInternet(Context context){
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -270,14 +270,15 @@
 
 
                 <Button
+                    android:enabled="false"
                     android:id="@+id/cart_button_place_order"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/bgbtnsignin"
+                    android:background="@drawable/bgbtncreate"
                     android:fontFamily="@font/mm"
                     android:text="PLACE ORDER"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/textColorAccent" />
 
             </LinearLayout>
 

@@ -87,7 +87,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         }
         if (!productId.isEmpty() && productId != null){
 
-            if (!Common.isConnectedToInternet(this)){
+            if (Common.isConnectedToInternet(this)){
                 loadProductDetail(productId);
             }
             else{

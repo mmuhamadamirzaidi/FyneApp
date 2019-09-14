@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Order;
 import com.mmuhamadamirzaidi.fyneapp.R;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
 
     public TextView item_cart_product_name, item_cart_price;
 
@@ -46,11 +48,20 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
         item_cart_count = (ElegantNumberButton) itemView.findViewById(R.id.item_cart_count);
 
+        itemView.setOnCreateContextMenuListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        menu.setHeaderTitle("Select action");
+        menu.add(0, 0, getAdapterPosition(), Common.DELETE_CART);
     }
 }
 
