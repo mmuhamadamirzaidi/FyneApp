@@ -104,6 +104,19 @@ public class CartActivity extends AppCompatActivity {
 
     private void loadCartListProduct() {
 
+        if (cart.size() > 0){
+            cart_button_place_order.setEnabled(true);
+
+            cart_button_place_order.setBackground(getResources().getDrawable(R.drawable.bgbtnsignin));
+            cart_button_place_order.setTextColor(getResources().getColor(R.color.white));
+        }
+        else {
+            cart_button_place_order.setEnabled(false);
+
+            cart_button_place_order.setBackground(getResources().getDrawable(R.drawable.bgbtncreate));
+            cart_button_place_order.setTextColor(getResources().getColor(R.color.textColorAccent));
+        }
+
         cart = new Database(this).getCart();
         cartAdapter = new CartAdapter(cart, this);
         cartAdapter.notifyDataSetChanged(); //Detect any changes and update recycler view
