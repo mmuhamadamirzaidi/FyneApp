@@ -95,12 +95,15 @@ public class OrderStatusActivity extends AppCompatActivity {
                         Toast.makeText(OrderStatusActivity.this, "Order Id: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
 
                         Intent order_detail = new Intent(OrderStatusActivity.this, OrderDetailActivity.class);
-                        order_detail.putExtra("orderId", adapter.getRef(position).getKey());
 
                         order_detail.putExtra("status", convertCodeToStatus(model.getStatus()));
+                        order_detail.putExtra("orderId", adapter.getRef(position).getKey());
+
                         order_detail.putExtra("userName", model.getUserName());
                         order_detail.putExtra("userAddress", model.getUserAddress());
                         order_detail.putExtra("userPhone", model.getUserPhone());
+
+                        order_detail.putExtra("notes", model.getNotes());
 
                         order_detail.putExtra("subTotal", model.getGrandSubTotal());
                         order_detail.putExtra("deliveryCharge", model.getGrandDeliveryCharge());

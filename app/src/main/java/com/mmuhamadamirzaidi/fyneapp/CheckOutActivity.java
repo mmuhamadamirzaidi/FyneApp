@@ -26,7 +26,7 @@ public class CheckOutActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference orderrequest;
 
-    private EditText check_out_delivery_address;
+    private EditText check_out_delivery_address, check_out_delivery_notes;
     private Button button_check_out;
 
     List<Order> cart = new ArrayList<>();
@@ -43,6 +43,7 @@ public class CheckOutActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         check_out_delivery_address = findViewById(R.id.check_out_delivery_address);
+        check_out_delivery_notes = findViewById(R.id.check_out_delivery_notes);
         button_check_out = findViewById(R.id.button_check_out);
 
         check_out_delivery_address.getText().toString().trim();
@@ -73,6 +74,7 @@ public class CheckOutActivity extends AppCompatActivity {
                         cart_delivery_charge,
                         cart_others_charge,
                         cart_discount,
+                        check_out_delivery_notes.getText().toString().trim(),
                         cart
                 );
 

@@ -216,7 +216,7 @@
             app:hintEnabled="false">
 
             <EditText
-                android:id="@+id/sign_in_passwrd"
+                android:id="@+id/check_out_delivery_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"

@@ -16,12 +16,14 @@ public class OrderRequest {
     public String grandOthersCharge;
     public String grandDiscount;
 
+    public String notes;
+
     public List<Order> product;
 
     public OrderRequest() {
     }
 
-    public OrderRequest(String userPhone, String userName, String userAddress, String grandTotal, String grandSubTotal, String grandDeliveryCharge, String grandOthersCharge, String grandDiscount, List<Order> product) {
+    public OrderRequest(String userPhone, String userName, String userAddress, String grandTotal, String grandSubTotal, String grandDeliveryCharge, String grandOthersCharge, String grandDiscount, String notes, List<Order> product) {
         this.userPhone = userPhone;
         this.userName = userName;
         this.userAddress = userAddress;
@@ -31,6 +33,7 @@ public class OrderRequest {
         this.grandDeliveryCharge = grandDeliveryCharge;
         this.grandOthersCharge = grandOthersCharge;
         this.grandDiscount = grandDiscount;
+        this.notes = notes;
         this.product = product;
     }
 
@@ -104,6 +107,14 @@ public class OrderRequest {
 
     public void setGrandDiscount(String grandDiscount) {
         this.grandDiscount = grandDiscount;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public List<Order> getProduct() {
