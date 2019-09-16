@@ -354,7 +354,7 @@
                         android:text="Sub Total" />
 
                     <TextView
-                        android:id="@+id/cart_sub_total"
+                        android:id="@+id/order_detail_sub_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
@@ -387,7 +387,7 @@
                         android:text="Delivery Charge" />
 
                     <TextView
-                        android:id="@+id/cart_delivery_charge"
+                        android:id="@+id/order_detail_delivery_charge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
@@ -420,7 +420,7 @@
                         android:text="Others Charge" />
 
                     <TextView
-                        android:id="@+id/cart_others_charge"
+                        android:id="@+id/order_detail_other_charge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
@@ -462,7 +462,7 @@
                         android:text="-" />
 
                     <TextView
-                        android:id="@+id/dd"
+                        android:id="@+id/order_detail_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"

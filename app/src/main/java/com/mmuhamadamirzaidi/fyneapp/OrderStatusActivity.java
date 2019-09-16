@@ -101,6 +101,12 @@ public class OrderStatusActivity extends AppCompatActivity {
                         order_detail.putExtra("userName", model.getUserName());
                         order_detail.putExtra("userAddress", model.getUserAddress());
                         order_detail.putExtra("userPhone", model.getUserPhone());
+
+                        order_detail.putExtra("subTotal", model.getGrandSubTotal());
+                        order_detail.putExtra("deliveryCharge", model.getGrandDeliveryCharge());
+                        order_detail.putExtra("othersCharge", model.getGrandOthersCharge());
+                        order_detail.putExtra("discount", model.getGrandDiscount());
+
                         order_detail.putExtra("grandTotal", model.getGrandTotal());
 
                         Common.currentRequest = model;
