@@ -83,10 +83,11 @@ public class CartActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent checkoutIntent = new Intent(CartActivity.this, CheckOutActivity.class);
-//                checkoutIntent.putExtra("cart_sub_total", Common.cart_sub_total_global);
-//                checkoutIntent.putExtra("cart_delivery_charge", Common.cart_delivery_charge_global);
-//                checkoutIntent.putExtra("cart_others_charge", Common.cart_others_charge_global);
-                    checkoutIntent.putExtra("cart_grand_total", Common.cart_grand_total_global);
+                    checkoutIntent.putExtra("cart_sub_total_global", Common.cart_sub_total_global);
+                    checkoutIntent.putExtra("cart_delivery_charge_global", Common.cart_delivery_charge_global);
+                    checkoutIntent.putExtra("cart_others_charge_global", Common.cart_others_charge_global);
+                    checkoutIntent.putExtra("cart_discount_global", Common.cart_discount_global);
+                    checkoutIntent.putExtra("cart_grand_total_global", Common.cart_grand_total_global);
                     startActivity(checkoutIntent);
                 }
             });

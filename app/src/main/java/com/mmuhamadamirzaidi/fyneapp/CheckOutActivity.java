@@ -47,17 +47,15 @@ public class CheckOutActivity extends AppCompatActivity {
 
         check_out_delivery_address.getText().toString().trim();
 
-
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         orderrequest = database.getReference("OrderRequest");
 
-
-
-//        String cart_sub_total = getIntent().getStringExtra("cart_sub_total");
-//        String cart_delivery_charge = getIntent().getStringExtra("cart_delivery_charge");
-//        String cart_others_charge = getIntent().getStringExtra("cart_others_charge");
-        final String cart_grand_total = getIntent().getStringExtra("cart_grand_total");
+        final String cart_sub_total = getIntent().getStringExtra("cart_sub_total_global");
+        final String cart_delivery_charge = getIntent().getStringExtra("cart_delivery_charge_global");
+        final String cart_others_charge = getIntent().getStringExtra("cart_others_charge_global");
+        final String cart_discount = getIntent().getStringExtra("cart_discount_global");
+        final String cart_grand_total = getIntent().getStringExtra("cart_grand_total_global");
 
         cart = new Database(this).getCart();
         cartAdapter = new CartAdapter(cart, this);
@@ -71,6 +69,10 @@ public class CheckOutActivity extends AppCompatActivity {
                         Common.currentUser.getUserName(),
                         check_out_delivery_address.getText().toString().trim(),
                         cart_grand_total,
+                        cart_sub_total,
+                        cart_delivery_charge,
+                        cart_others_charge,
+                        cart_discount,
                         cart
                 );
 
