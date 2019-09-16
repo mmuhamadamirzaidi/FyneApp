@@ -55,13 +55,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/order_detail_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/mm"
                     android:gravity="center"
-                    android:text="Thu, 5 Feb, 8.00 PM"
-                    android:textColor="@android:color/white"
+                    android:text="Order Status"
+                    android:textColor="@color/white"
                     android:textSize="15sp" />
 
                 <TextView
@@ -184,7 +185,7 @@
                     android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delivery Time &amp; Date"/>
+                    android:text="Order Time &amp; Date"/>
 
 
             </LinearLayout>
@@ -213,23 +214,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thu, 5 Feb, 8.00 PM"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right|center_vertical">
-
-                    <TextView
-                        android:id="@+id/order_detail_status"
-                        android:textColor="@color/textColorPrimary"
-                        android:fontFamily="@font/mm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Processing"/>
 
                 </LinearLayout>
 

@@ -30,7 +30,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         order_detail_cart_grand_total.setText(getIntent().getStringExtra("grandTotal"));
 
         if (getIntent().getStringExtra("status").equals("Processing")){
-            order_detail_status.setTextColor(getResources().getColor(R.color.textColorPrimary));
+            order_detail_status.setTextColor(getResources().getColor(R.color.white));
         }
         else if (getIntent().getStringExtra("status").equals("Shipped")){
             order_detail_status.setTextColor(getResources().getColor(R.color.shipped));
