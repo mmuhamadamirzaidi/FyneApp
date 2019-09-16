@@ -176,9 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.refresh){
-            loadCategory();
-        }
+//        if (item.getItemId() == R.id.refresh){
+//            loadCategory();
+//        }
 
         return super.onOptionsItemSelected(item);
     }
