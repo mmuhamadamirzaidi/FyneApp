@@ -100,6 +100,41 @@
 
 <!--            </LinearLayout>-->
 
+<!--            <LinearLayout-->
+<!--                android:weightSum="10"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="10dp"-->
+<!--                android:paddingTop="30dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <TextView-->
+<!--                    android:textColor="@color/textColorPrimaryDark"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:fontFamily="@font/mm"-->
+<!--                    android:layout_weight="10"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Products Informations"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:paddingTop="5dp"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <android.support.v7.widget.RecyclerView-->
+<!--                    android:id="@+id/recycler_order_detail"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                </android.support.v7.widget.RecyclerView>-->
+
+<!--            </LinearLayout>-->
+
             // Description
 
             <LinearLayout

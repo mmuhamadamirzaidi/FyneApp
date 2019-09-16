@@ -27,7 +27,7 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
         super(itemView);
 
         item_order_id = (TextView) itemView.findViewById(R.id.item_order_id);
-        item_order_date = (TextView) itemView.findViewById(R.id.item_order_date);
+//        item_order_date = (TextView) itemView.findViewById(R.id.item_order_date);
         item_order_price = (TextView) itemView.findViewById(R.id.item_order_price);
         item_order_status = (TextView) itemView.findViewById(R.id.item_order_status);
 

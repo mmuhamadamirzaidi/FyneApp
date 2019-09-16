@@ -1,6 +1,7 @@
 package com.mmuhamadamirzaidi.fyneapp;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,6 +55,8 @@ public class ProductListActivity extends AppCompatActivity {
 
     MaterialSearchBar product_list_search_bar;
 
+    SwipeRefreshLayout swipe_layout_product_list;
+
     //Wishlist
     Database wishlistDB;
 
@@ -73,25 +76,54 @@ public class ProductListActivity extends AppCompatActivity {
         //Local wishlist database
         wishlistDB = new Database(this);
 
+        swipe_layout_product_list = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_product_list);
+        swipe_layout_product_list.setColorSchemeResources(R.color.colorPrimaryDark);
+
+        swipe_layout_product_list.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Get CategoryId intent
+                if (getIntent() != null){
+                    categoryId = getIntent().getStringExtra("categoryId");
+                }
+                if (!categoryId.isEmpty() && categoryId != null){
+
+                    if (Common.isConnectedToInternet(getBaseContext())){
+                        loadProduct(categoryId);
+                    }
+                    else{
+                        Toast.makeText(ProductListActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        swipe_layout_product_list.post(new Runnable() {
+            @Override
+            public void run() {
+                // Get CategoryId intent
+                if (getIntent() != null){
+                    categoryId = getIntent().getStringExtra("categoryId");
+                }
+                if (!categoryId.isEmpty() && categoryId != null){
+
+                    if (Common.isConnectedToInternet(getBaseContext())){
+                        loadProduct(categoryId);
+                    }
+                    else{
+                        Toast.makeText(ProductListActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
         // Load category
         recycler_product = (RecyclerView) findViewById(R.id.recycler_product);
 //        recycler_product.setHasFixedSize(true); //Need to remove if using Firebase Recycler Adapter/Disable for API 19 and below
         layoutManager = new LinearLayoutManager(this);
         recycler_product.setLayoutManager(layoutManager);
 
-        // Get CategoryId intent
-        if (getIntent() != null){
-            categoryId = getIntent().getStringExtra("categoryId");
-        }
-        if (!categoryId.isEmpty() && categoryId != null){
 
-            if (Common.isConnectedToInternet(this)){
-                loadProduct(categoryId);
-            }
-            else{
-                Toast.makeText(ProductListActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
-            }
-        }
 
         product_list_search_bar = (MaterialSearchBar) findViewById(R.id.product_list_search_bar);
         product_list_search_bar.setHint("Search the products...");
@@ -237,5 +269,6 @@ public class ProductListActivity extends AppCompatActivity {
             }
         };
         recycler_product.setAdapter(adapter);
+        swipe_layout_product_list.setRefreshing(false);
     }
 }

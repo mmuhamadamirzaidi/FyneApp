@@ -22,10 +22,8 @@ public class OrderStatusActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference orderrequest;
 
-    RecyclerView recycler_order;
+    RecyclerView recycler_order, recycler_order_detail;
     RecyclerView.LayoutManager layoutManager;
-
-
 
     FirebaseRecyclerAdapter<OrderRequest, OrderViewHolder> adapter;
 

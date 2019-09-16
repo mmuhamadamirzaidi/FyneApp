@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter;
 
+    SwipeRefreshLayout swipe_layout_category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.category_toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+
+        // Swipe Layout
+        swipe_layout_category = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_category);
+        swipe_layout_category.setColorSchemeResources(R.color.colorPrimaryDark);
+
+        swipe_layout_category.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (Common.isConnectedToInternet(getBaseContext())){
+                    loadCategory();
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Default, load for first time
+        swipe_layout_category.post(new Runnable() {
+            @Override
+            public void run() {
+                if (Common.isConnectedToInternet(getBaseContext())){
+                    loadCategory();
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Please check Internet connection!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         // Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -95,12 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         layoutManager = new LinearLayoutManager(this);
         recycler_category.setLayoutManager(layoutManager);
 
-        if (Common.isConnectedToInternet(this)){
-            loadCategory();
-        }
-        else{
-            Toast.makeText(MainActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     private void loadCategory() {
@@ -126,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         };
         recycler_category.setAdapter(adapter);
+        swipe_layout_category.setRefreshing(false);
     }
 
     @Override
