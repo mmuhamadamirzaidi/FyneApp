@@ -34,29 +34,30 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/detail_product_fab_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/detail_image"
+        android:elevation="0dp"
+        android:layout_marginEnd="16dp"
+        app:layout_anchorGravity="bottom|right"
+        android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
+        android:backgroundTint="@color/white"
+        app:borderWidth="0dp" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/detail_product_fab_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/detail_image"
                 app:layout_anchorGravity="bottom|right"
+                android:layout_marginEnd="85dp"
                 android:elevation="0dp"
-                android:layout_marginRight="16dp"
                 android:src="@drawable/ic_shopping_basket_primary_dark_24dp"
                 android:backgroundTint="@color/white"
                 app:borderWidth="0dp"/>
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/detail_product_fab_bookmark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_anchor="@id/detail_image"
-                android:elevation="0dp"
-                android:layout_marginRight="85dp"
-                app:layout_anchorGravity="bottom|right"
-                android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
-                android:backgroundTint="@color/white"
-                app:borderWidth="0dp" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/detail_nested_scroll_view"
@@ -138,6 +139,7 @@
                     android:gravity="left|center_vertical">
 
                     <RatingBar
+                        android:id="@+id/detail_rating_bar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:rating="4.5"
@@ -145,13 +147,29 @@
                         android:max="5"
                         android:isIndicator="true"/>
 
-                    <TextView
-                        android:textColor="@color/textColorPrimary"
-                        android:paddingLeft="10dp"
-                        android:fontFamily="@font/mr"
+                    <LinearLayout
+                        android:id="@+id/detail_view_total_review"
+                        android:paddingStart="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1443 reviews"/>
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/detail_total_review"
+                            android:textColor="@color/textColorPrimary"
+                            android:fontFamily="@font/mr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1001"/>
+
+                        <TextView
+                            android:textColor="@color/textColorPrimary"
+                            android:fontFamily="@font/mr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" reviews"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -166,7 +184,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="RM"
-                        android:fontFamily="@font/mr"/>
+                        android:textColor="@color/textColorPrimary"
+                        android:fontFamily="@font/mm"/>
 
                     <TextView
                         android:id="@+id/detail_product_price"
