@@ -59,6 +59,5 @@ dependencies {
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
     implementation 'io.paperdb:paperdb:2.1'
-
     implementation 'com.stepstone.apprating:app-rating:2.0.0'
 }

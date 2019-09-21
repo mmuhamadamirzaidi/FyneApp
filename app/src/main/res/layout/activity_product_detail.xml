@@ -18,18 +18,18 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolbarTheme"
-            app:titleTextColor="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/white">
 
             <TextView
+                android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="Product's Details"
                 android:layout_gravity="center"
+                android:text="Product's Details"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:theme="@style/ToolbarTheme"
-                android:id="@+id/toolbar_title" />
+                android:theme="@style/ToolbarTheme" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -38,25 +38,25 @@
         android:id="@+id/detail_product_fab_bookmark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/detail_image"
-        android:elevation="0dp"
         android:layout_marginEnd="16dp"
-        app:layout_anchorGravity="bottom|right"
-        android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
         android:backgroundTint="@color/white"
-        app:borderWidth="0dp" />
+        android:elevation="0dp"
+        android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/detail_image"
+        app:layout_anchorGravity="bottom|right" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/detail_product_fab_cart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_anchor="@id/detail_image"
-                app:layout_anchorGravity="bottom|right"
-                android:layout_marginEnd="85dp"
-                android:elevation="0dp"
-                android:src="@drawable/ic_shopping_basket_primary_dark_24dp"
-                android:backgroundTint="@color/white"
-                app:borderWidth="0dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/detail_product_fab_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="85dp"
+        android:backgroundTint="@color/white"
+        android:elevation="0dp"
+        android:src="@drawable/ic_shopping_basket_primary_dark_24dp"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/detail_image"
+        app:layout_anchorGravity="bottom|right" />
 
 
     <android.support.v4.widget.NestedScrollView
@@ -64,12 +64,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/detail_image"
@@ -79,165 +79,186 @@
                 android:src="@drawable/previewlogo" />
 
             <LinearLayout
-                android:weightSum="10"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:paddingRight="10dp"
+                android:weightSum="10">
 
                 <TextView
-                    android:textColor="@color/textColorPrimaryDark"
                     android:id="@+id/detail_product_name"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/mm"
-                    android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Creatic Vitamin Perming Lotion Creatic Vitamin Aa Perming Lotion"/>
+                    android:layout_weight="10"
+                    android:fontFamily="@font/mm"
+                    android:text="Creatic Vitamin Perming Lotion Creatic Vitamin Aa Perming Lotion"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingTop="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp">
 
                 <TextView
-                    android:textColor="@color/textColorPrimary"
                     android:id="@+id/detail_product_notification"
-                    android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NOT110407285K"/>
+                    android:fontFamily="@font/ml"
+                    android:text="NOT110407285K"
+                    android:textColor="@color/textColorPrimary" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:weightSum="4"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="10dp"
+                android:weightSum="4">
 
 
                 <LinearLayout
-                    android:layout_weight="4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="left|center_vertical">
+                    android:layout_weight="4"
+                    android:gravity="left|center_vertical"
+                    android:orientation="horizontal">
 
                     <RatingBar
                         android:id="@+id/detail_rating_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:rating="4.5"
-                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:isIndicator="true"
                         android:max="5"
-                        android:isIndicator="true"/>
+                        android:rating="0" />
 
                     <LinearLayout
                         android:id="@+id/detail_view_total_review"
-                        android:paddingStart="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp">
 
                         <TextView
                             android:id="@+id/detail_total_review"
-                            android:textColor="@color/textColorPrimary"
-                            android:fontFamily="@font/mr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1001"/>
+                            android:fontFamily="@font/mr"
+                            android:text="0"
+                            android:textColor="@color/textColorPrimary" />
 
                         <TextView
-                            android:textColor="@color/textColorPrimary"
-                            android:fontFamily="@font/mr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" reviews"/>
+                            android:fontFamily="@font/mr"
+                            android:text=" reviews"
+                            android:textColor="@color/textColorPrimary" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right|center_vertical">
+                    android:layout_weight="0"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/mm"
                         android:text="RM"
-                        android:textColor="@color/textColorPrimary"
-                        android:fontFamily="@font/mm"/>
+                        android:textColor="@color/textColorPrimary" />
 
                     <TextView
                         android:id="@+id/detail_product_price"
-                        android:textColor="@color/textColorPrimary"
-                        android:fontFamily="@font/mm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="200"/>
+                        android:fontFamily="@font/mm"
+                        android:text="200"
+                        android:textColor="@color/textColorPrimary" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:paddingRight="10dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/detail_give_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:fontFamily="@font/mm"
+                    android:text="Test Give Review"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
             // Description
 
             <LinearLayout
-                android:weightSum="10"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="30dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:paddingRight="10dp"
+                android:weightSum="10">
 
                 <TextView
-                    android:textColor="@color/textColorPrimaryDark"
                     android:id="@+id/detail_description_title"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/mm"
-                    android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product's Description"/>
+                    android:layout_weight="10"
+                    android:fontFamily="@font/mm"
+                    android:text="Product's Description"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingTop="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp">
 
                 <TextView
-                    android:textColor="@color/textColorPrimary"
                     android:id="@+id/detail_product_description"
-                    android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."/>
+                    android:fontFamily="@font/ml"
+                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+                    android:textColor="@color/textColorPrimary" />
 
 
             </LinearLayout>
@@ -245,42 +266,42 @@
             // Allergens
 
             <LinearLayout
-                android:weightSum="10"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="30dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="30dp"
+                android:paddingRight="10dp"
+                android:weightSum="10">
 
                 <TextView
-                    android:textColor="@color/textColorPrimaryDark"
                     android:id="@+id/detail_allergens_title"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/mm"
-                    android:layout_weight="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Allergens"/>
+                    android:layout_weight="10"
+                    android:fontFamily="@font/mm"
+                    android:text="Allergens"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="8dp"
-                android:paddingTop="5dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="10dp">
 
                 <TextView
-                    android:textColor="@color/textColorPrimary"
                     android:id="@+id/detail_product_allergens"
-                    android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."/>
+                    android:fontFamily="@font/ml"
+                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+                    android:textColor="@color/textColorPrimary" />
 
 
             </LinearLayout>
@@ -289,46 +310,45 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-<!--    <android.support.design.widget.FloatingActionButton-->
-<!--        android:id="@+id/detail_product_fab_bookmark"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:layout_margin="@dimen/fab_margin"-->
-<!--        app:srcCompat="@drawable/ic_bookmark_border_white_24dp" />-->
+    <!--    <android.support.design.widget.FloatingActionButton-->
+    <!--        android:id="@+id/detail_product_fab_bookmark"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom"-->
+    <!--        android:layout_margin="@dimen/fab_margin"-->
+    <!--        app:srcCompat="@drawable/ic_bookmark_border_white_24dp" />-->
 
-<!--    <android.support.design.widget.FloatingActionButton-->
-<!--        android:id="@+id/detail_product_fab_cart"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|end"-->
-<!--        android:layout_margin="@dimen/fab_margin"-->
-<!--        app:srcCompat="@drawable/ic_shopping_basket_white_24dp" />-->
-
-
-
-<!--    <LinearLayout-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_anchorGravity="bottom|right|end" >-->
-
-<!--        <android.support.design.widget.FloatingActionButton-->
-<!--            android:id="@+id/detail_product_fab_bookmark"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            android:src="@drawable/ic_bookmark_border_primary_dark_24dp"-->
-<!--            app:useCompatPadding="true" />-->
-
-<!--        <android.support.design.widget.FloatingActionButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            android:src="@drawable/ic_shopping_basket_primary_dark_24dp"-->
-<!--            app:useCompatPadding="true" />-->
+    <!--    <android.support.design.widget.FloatingActionButton-->
+    <!--        android:id="@+id/detail_product_fab_cart"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end"-->
+    <!--        android:layout_margin="@dimen/fab_margin"-->
+    <!--        app:srcCompat="@drawable/ic_shopping_basket_white_24dp" />-->
 
 
-<!--    </LinearLayout>-->
+    <!--    <LinearLayout-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_anchorGravity="bottom|right|end" >-->
+
+    <!--        <android.support.design.widget.FloatingActionButton-->
+    <!--            android:id="@+id/detail_product_fab_bookmark"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="@color/white"-->
+    <!--            android:src="@drawable/ic_bookmark_border_primary_dark_24dp"-->
+    <!--            app:useCompatPadding="true" />-->
+
+    <!--        <android.support.design.widget.FloatingActionButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="@color/white"-->
+    <!--            android:src="@drawable/ic_shopping_basket_primary_dark_24dp"-->
+    <!--            app:useCompatPadding="true" />-->
+
+
+    <!--    </LinearLayout>-->
 
 </android.support.design.widget.CoordinatorLayout>
