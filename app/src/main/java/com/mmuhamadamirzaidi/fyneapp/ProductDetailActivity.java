@@ -148,8 +148,6 @@ public class ProductDetailActivity extends AppCompatActivity implements RatingDi
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
 
-                    detail_total_review.setText(count);
-
                     Rating item = dataSnapshot1.getValue(Rating.class);
                     sum += Integer.parseInt(item.getRatingValue());
                     count++;
@@ -157,7 +155,7 @@ public class ProductDetailActivity extends AppCompatActivity implements RatingDi
                 if (count != 0){
                     float average = sum/count;
                     detail_rating_bar.setRating(average);
-//                    detail_total_review.setText(count);
+                    detail_total_review.setText(String.valueOf(count));
                 }
             }
 

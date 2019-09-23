@@ -23,47 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
-
-    public TextView item_cart_product_name, item_cart_price;
-
-    public ImageView item_cart_product_image;
-
-    public ElegantNumberButton item_cart_count;
-
-    private ItemClickListener itemClickListener;
-
-    public CartViewHolder(@NonNull View itemView, TextView item_cart_product_name) {
-        super(itemView);
-        this.item_cart_product_name = item_cart_product_name;
-    }
-
-    public CartViewHolder(@NonNull View itemView) {
-        super(itemView);
-
-        item_cart_product_name = (TextView) itemView.findViewById(R.id.item_cart_product_name);
-        item_cart_price = (TextView) itemView.findViewById(R.id.item_cart_price);
-
-        item_cart_product_image = (ImageView) itemView.findViewById(R.id.item_cart_product_image);
-
-        item_cart_count = (ElegantNumberButton) itemView.findViewById(R.id.item_cart_count);
-
-        itemView.setOnCreateContextMenuListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-
-        menu.setHeaderTitle("Select action");
-        menu.add(0, 0, getAdapterPosition(), Common.DELETE_CART);
-    }
-}
 
 public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
@@ -106,5 +65,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
     @Override
     public int getItemCount() {
         return listData.size();
+    }
+
+    public Order getItem(int position){
+        return listData.get(position);
+    }
+
+    public void removeItem(int position){
+        listData.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Order item, int position){
+        listData.add(position, item);
+        notifyItemInserted(position);
     }
 }

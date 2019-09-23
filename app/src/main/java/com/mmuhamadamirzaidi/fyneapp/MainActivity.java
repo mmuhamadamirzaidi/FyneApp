@@ -196,7 +196,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_holders) {
 
-            Toast.makeText(MainActivity.this, "Holders", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, "Holders", Toast.LENGTH_SHORT).show();
+            Intent holderIntent = new Intent(MainActivity.this, HolderListActivity.class);
+            startActivity(holderIntent);
 
         } else if (id == R.id.nav_cart) {
 
@@ -214,7 +216,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }else if (id == R.id.banned_products) {
 
-            Toast.makeText(MainActivity.this, "Banned Products", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, "Banned Products", Toast.LENGTH_SHORT).show();
+            Intent bannedProductIntent = new Intent(MainActivity.this, BannedProductListActivity.class);
+            startActivity(bannedProductIntent);
 
         }else if (id == R.id.news) {
 

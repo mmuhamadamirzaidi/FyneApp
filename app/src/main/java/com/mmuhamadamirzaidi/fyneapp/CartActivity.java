@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,15 +15,18 @@ import android.widget.Toast;
 
 import com.mmuhamadamirzaidi.fyneapp.Common.Common;
 import com.mmuhamadamirzaidi.fyneapp.Database.Database;
+import com.mmuhamadamirzaidi.fyneapp.Helper.RecyclerItemTouchHelper;
+import com.mmuhamadamirzaidi.fyneapp.Interface.RecyclerItemTouchHelperListener;
 import com.mmuhamadamirzaidi.fyneapp.Model.Order;
 import com.mmuhamadamirzaidi.fyneapp.ViewHolder.CartAdapter;
+import com.mmuhamadamirzaidi.fyneapp.ViewHolder.CartViewHolder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
 
     RecyclerView recycler_cart;
     RecyclerView.LayoutManager layoutManager;
@@ -49,6 +53,10 @@ public class CartActivity extends AppCompatActivity {
         recycler_cart.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recycler_cart.setLayoutManager(layoutManager);
+
+        // Swipe to delete
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recycler_cart);
 
         cart_add_new_product = (TextView) findViewById(R.id.cart_add_new_item);
 
@@ -177,5 +185,43 @@ public class CartActivity extends AppCompatActivity {
 
         //Refresh cart list product
         loadCartListProduct();
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+//        if (viewHolder instanceof CartViewHolder){
+//            String name = ((CartAdapter)recycler_cart.getAdapter()).getItem(viewHolder.getAdapterPosition()).getProductName();
+//
+//            Order deleteItem = ((CartAdapter)recycler_cart.getAdapter()).getItem(viewHolder.getAdapterPosition());
+//            int deleteIndex = viewHolder.getAdapterPosition();
+//
+//            cartAdapter.removeItem(deleteIndex);
+////            new Database(getBaseContext()).clearWishlist(deleteItem.getProductId(), Common.currentUser.getUserPhone());
+//
+//            //Calculate grand total
+//            int sub_total_initial = 0, grand_total_initial = 0, delivery_charge = 0, others_charge = 0, discount = 0, total_charge;
+////            List<Order> orders = new Database(getBaseContext()).getCart(Common.currentUser.getUserPhone());
+//
+//            for (Order order:cart) {
+//                delivery_charge = (Integer.parseInt("6"));
+//                others_charge = (Integer.parseInt("1"));
+//                total_charge = delivery_charge + others_charge;
+//
+//                discount += (Integer.parseInt(order.getDiscount()));
+//
+//                sub_total_initial += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
+//                grand_total_initial = sub_total_initial + total_charge - discount;
+//            }
+//
+//            Locale locale = new Locale("en", "MY");
+//            NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+//
+//            cart_sub_total.setText(fmt.format(sub_total_initial));
+//            cart_delivery_charge.setText(fmt.format(delivery_charge));
+//            cart_others_charge.setText(fmt.format(others_charge));
+//            cart_discount.setText(fmt.format(discount));
+//            cart_grand_total.setText(fmt.format(grand_total_initial));
+//        }
+        Toast.makeText(this, "Test swipe delete function!", Toast.LENGTH_SHORT).show();
     }
 }
